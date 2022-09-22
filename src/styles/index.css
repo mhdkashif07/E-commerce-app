@@ -1,0 +1,757 @@
+* Global styles *
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #ffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    padding: 40px 80px  40px 80px;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+ul{
+    list-style: none;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+
+
+/******* Header styles *******/
+
+.navbar_container{
+    display: flex;
+    padding: 25px 80px;
+    height: 35px;
+    align-items: center;
+    position: relative;  
+    font-weight: bold; 
+}
+
+.navbar_container a{color: white;}
+
+.nav_logo{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.logo__name{
+    margin-left: 7px;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    color: black;
+}
+.logo__name .e{
+    color: orange;
+}
+
+.nav_logo img{
+    width: 45.77px;
+    height: 35px;
+    background: cornflowerblue;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.nav_options ul{
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.nav_options ul li{
+    padding: 0 1.1rem;
+}
+
+.nav_icons ul{
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end;
+}
+
+.nav_icons ul li{
+    margin-left: .7rem;
+}
+
+.nav_icons ul li svg{
+    font-size: 1.6rem;
+}
+
+.cart__logo{
+    position: relative;
+}
+
+.total__items{
+    background-color: yellow;
+    color: black;
+    padding: 1px 6px 1px 5px;
+    font-size: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: -8px;
+    left: 50%;
+
+}
+
+.home_container{
+    background-color: rgb(123, 143, 143);
+    width: 100%;
+    height: 100vh;
+    background-image: url(../../public/joao-silas-SfkLX6fUObk-unsplash.png);
+    position: relative;
+    background-size: cover;
+}
+
+.home_img img{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+
+
+.home_text{
+    position: absolute;
+    top: 30%;
+    left: 21%;
+    font-size: 50px;
+    font-weight: bold;
+    color: #ffff;
+}
+
+
+
+.shop_now{
+    display: flex;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.shop_button{
+    background-color: #FBB03B;
+    padding: 7px 15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.shop_button img{
+    width: 15.34px;
+    height: 13.33px;
+}
+
+.shop_text{
+    margin-left: 15px;
+    font-size: 13px;
+}
+.shop_text h3{
+    margin-top: 9px;
+}
+
+.features__section{
+    position: absolute;
+    bottom: 0;
+    width: 1000px;
+}
+
+
+.features_container{
+    background-color:white;
+    border-top-right-radius: 40px;
+    padding-left: 30%;
+    
+}
+
+.feature_item_container{
+    display: flex;
+    padding: 20px 0;
+}
+
+
+.feature_img{
+    background-color: #FFF3DF;
+    width: 39px;
+    height: 39px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.feature_item_container img{
+    width: 20.49px;
+    height: 12.1px;
+}
+
+.feature_text{
+    margin-left: 10px;
+}
+.feature_text h3{
+    font-size: 14px;
+}
+.feature_text p{
+    font-size: 12px;
+    color: #A8A8A8;
+}
+
+/*******  Sale styles   *******/
+
+.sale_product_container{
+    position: relative;
+}
+
+.sale_product_container .product_img img{
+    background-color: red;
+    height: 373px;
+}
+
+.sale_container .text_container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-blend-mode: darken;
+    background: rgba(0,0,0,0.3);
+    margin-bottom: 8px;
+}
+
+.sale_container .product_text{
+    position: absolute;
+    top: 44%;
+    left: 9%;
+    color: #ffff;
+    font-size: 25px;
+}
+
+.product_button_container{
+    background-color: #ffff;
+    padding: 10px;
+    border-radius: 35px;
+    font-size: 13px;
+    color: #000;
+    text-align: center;
+}
+
+.product_button_container a{
+    text-decoration: none;
+}
+
+
+/*******  Selected products styles  *******/
+
+.selected_product_container .show_more{
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+
+.selected_product_item{
+    position: relative;
+}
+
+.show_more .selected_title{
+    font-size: 29px;
+}
+
+.show_more .show_more_button{
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #ffff;
+    border: 1px solid #707070;
+}
+
+.show_more_button a{
+    text-decoration: none;
+    font-size: 19px;
+    color: #000;
+}
+
+.discount_container{
+    display: flex;
+    position: absolute;
+    top: 5%;
+    left: 6%;
+}
+
+.discount_container .discount h4{
+    background-color: red;
+    padding: 4px 12px;
+    border-radius: 25px;
+    color: #ffff;
+}
+
+.product_text{
+    margin-top: 14px;
+}
+
+.product_text h3{
+    font-size: 16px;
+}
+
+.selected_product_container .product_img img{
+    border: 1px solid #707070;
+}
+
+
+
+/****** Choose us styles ******/
+.choose_us_container{
+    padding-bottom: 70px;
+}
+
+.choose_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+    font-size: 29px;
+}
+
+.item_title{
+    padding: 20px 0;
+    font-size: 16px;
+}
+
+.item_discription{
+    font-size: 13px;
+    color: #808080;
+}
+
+.choose_img{
+    background-color: #F6F6F6;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.choose_img img{
+    width: 31.43px;
+    height: 21.72px;
+}
+
+/********  Today products styles *******/
+
+.today_product_item{
+    position: relative;
+}
+
+.today_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 70px 0;
+    font-size: 29px;
+}
+
+
+.discount_container{
+    display: flex;
+    position: absolute;
+    top: 5%;
+    left: 6%;
+}
+
+.discount_container .discount h4{
+    background-color: red;
+    padding: 4px 12px;
+    border-radius: 25px;
+    color: #ffff;
+}
+
+.product_text{
+    margin-top: 14px;
+}
+
+.product_text h3{
+    font-size: 16px;
+}
+
+.today_product_container .product_img img{
+    border: 1px solid #707070;
+}
+
+/****** Subscribe styles *****/
+
+
+.subscribe_container{
+    position: relative;
+    padding: 50px 0;
+}
+
+.subscribe_img_container{
+    position: relative;
+    
+}
+.subscribe_img{
+    background-repeat: no-repeat;
+    background-position: center;  
+    opacity: 0.5; 
+    
+}
+
+.subscribe_text_container{
+    
+    width: 100%;
+    height: 243px;
+    display: flex;
+    content: "";
+    /* background: rgba(0, 0, 0, 0.6) url(./images/blake-wisz-GFrBMipOd_E-unsplash.png); */
+    background-blend-mode: darken;
+    
+ 
+  
+}
+
+.subscribe_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribe_item_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.subscribe_text{
+    font-size: 25px;
+    color: #ffff;
+    padding: 5px 50px;
+    font-weight: bold;
+}
+.subscribe_right{
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribe_email input{
+    padding: 15px 130px 15px 40px;
+    border-radius: 50px;
+    border: none;
+}
+
+.subscribe_right .button_container{
+    background-color:#FBB03B;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 50px;
+    border: none;
+}
+
+
+
+
+
+
+
+/**********  Footer styles  *********/
+.footer_container{
+    padding: 50px 0 50px 0;
+}
+.first_item{
+    padding: 0 30px;
+}
+.footer_logo{
+    padding-bottom: 30px;
+}
+.right_side_title{
+    padding-bottom: 30px;
+}
+
+.social_icons_container .icons img{
+    width: 9.37px;
+    height: 17.33px;
+}
+
+.right_side_footer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer_container .MuiGrid-container {
+    justify-content: space-evenly;
+}
+
+.icons ul{
+    display: flex;
+    margin-top: 40px;
+}
+
+.icons ul li{
+    padding: 5px 20px;
+}
+
+.right_side_options ul li {
+    padding: 3px 0;
+}
+.right_side_options ul li a{
+    color: #000;
+    font-size: 13px;
+}
+
+
+.copy_right_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    border-top: 1px solid #707070;
+    font-size: 16px;
+}
+
+/*******  login styles  ******/
+.login_container{
+    background-color: aqua;
+    margin: auto;
+}
+.center_form{
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: blue;
+}
+
+.login_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.checkbox_container{
+    background-color: cadetblue;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: center;
+    font-size: 12px;
+}
+
+.checkbox_container .checkbox{
+    display: flex;
+    align-items: center;
+}
+
+
+
+/********************** single product styles ********************/
+.singleproduct__section{
+    padding: 2rem 4rem;
+}
+
+.color-black a{
+    color: black;
+}
+
+
+.product__details{
+    padding-left: 4rem;
+}
+
+.product__discount{
+    background-color: red;
+    padding: 2px 20px;
+    border-radius: 18px;
+    color: #ffff;
+    display: inline;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.product__price{
+    color: red;
+}
+
+.navbar__shadow{
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+/*******************  men products styles  ********************/
+.sidebar__section{
+    width: 100%;
+}
+
+.sidebar{
+    width: 300px;
+    margin-right: 2rem;
+}
+.men__products{
+    display: flex;
+} 
+
+
+
+/**********  cart styles  ***********/
+.cart__btn{
+    padding: 5px 30px;
+    border-radius: 25px;
+    background-color: darkmagenta;
+    margin-top: 1rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.cart__btn a{
+    color: #ffff;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.continue__shopping{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.continue__shopping h5{
+    display: flex;
+    align-items: center;
+    margin-top: .8rem;
+}
+
+.continue__shopping h5 svg{
+    margin-right: .5rem;
+}
+
+.cart__image{
+    display: flex;
+}
+
+.cart__summary{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid grey;
+}
+
+/* .cart__items{
+    border-top: 1px solid grey;
+    padding: 20px 0;
+    border-bottom: 1px solid grey;
+} */
+
+.titles{
+    padding-bottom: 25px;
+}
+
+.image__desc{
+    margin-left: 1.5rem;
+    padding: 5px 0;
+}
+
+.remove__item{
+    padding: 2px 5px 2px 0px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.remove__item:hover{
+    color: blue;
+}
+
+.cart__quantity{
+    padding: 3px 10px;
+    border: 1px solid grey;
+   display: inline-flex;
+   justify-content: center;
+   border-radius: 5px;
+}
+
+.cart__quantity button{
+    padding: 3px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    font-size: 15px;
+}
+
+.count{
+    padding: 3px 10px;
+}
+
+.clear__btn{
+    padding: 10px 30px;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.clear__cart button{
+    border: 1px solid grey;
+    cursor: pointer;
+    color: darkslategrey;
+}
+
+.subtotal{
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout__btn{
+    width: 100%;
+    padding: 12px 0;
+    display: inline-block;
+    margin-top: .4rem;
+    background: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+}
+
+.checkout p{
+    font-size: 14px;
+    color: grey;
+    padding: 10px 0 0px 0;
+}
+
+.text-start{
+    display: flex;
+    align-items: flex-start;
+}
