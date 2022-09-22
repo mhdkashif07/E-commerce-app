@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Navbar from '../components/navbar/Navbar'
 // import styles from '../styles/Home.module.css'
 import { Grid } from "@mui/material"
+import { Feature } from '../components'
 
 
 const Home: NextPage = () => {
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
             </Grid>
           </div>
         </Grid>
-        {/* <Features /> */}
+        <Feature />
       </div>
     </div>
   )

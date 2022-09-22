@@ -7,7 +7,7 @@ import { Grid } from "@mui/material";
 import { SearchOutlined } from "@mui/icons-material";
 // import PersonIcon from '@material-ui/icons/Person';
 // import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import Logo from './images/noun_cloth_2129414.png'
+import Logo from '../../../public/noun_cloth_2129414.png'
 import Link from "next/link";
 
 
@@ -21,7 +21,7 @@ const Navbar = () => {
         <Grid container alignItems="center">
           <Grid item xs={4} sm={4}  md={4} lg={4} xl={4}>
             <div className="nav_logo">
-              <Link href="/">asdf</Link>
+              <Link href="/"><img src={Logo.src} alt="" /></Link>
               <Link href="/"><span className="logo__name"> <span className="e">E</span>-Shop</span></Link>
             </div>
           </Grid>
