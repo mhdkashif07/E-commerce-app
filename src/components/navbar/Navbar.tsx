@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 
 import { Grid } from "@mui/material";
@@ -15,17 +15,49 @@ import Link from "next/link";
 
 const Navbar = () => {
 //   const { cartTotalQuantity } = useSelector((state) => state.cart)
+
+const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
+
+  const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
+  const [padding, setPadding] = useState(30);
+  const [boxShadow, setBoxShadow] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
+  const handleScroll = () => {
+    setClientWindowHeight(window.scrollY);
+  };
+
+  useEffect(() => {
+    let backgroundTransparacyVar = clientWindowHeight / 600;
+
+    if (backgroundTransparacyVar < 1) {
+      let paddingVar = 30 - backgroundTransparacyVar * 20;
+      let boxShadowVar = backgroundTransparacyVar * 0.1;
+      setBackgroundTransparacy(backgroundTransparacyVar);
+      setPadding(paddingVar);
+      setBoxShadow(boxShadowVar);
+    }
+  }, [clientWindowHeight]);
   return (
-    <div className="contai">
-      <div className="navbar_container">
-        <Grid container alignItems="center">
-          <Grid item xs={4} sm={4}  md={4} lg={4} xl={4}>
+    <div className="navbar__list">
+      <div className="navbar_container " style={{
+        background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
+        padding: `${padding}px 0px`,
+        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+      }}
+      >
+        <Grid container alignItems="center" justifyContent="space-around" >
+          <Grid item xs={3} sm={3}  md={3} lg={3} xl={3}>
             <div className="nav_logo">
               <Link href="/"><img src={Logo.src} alt="" /></Link>
               <Link href="/"><span className="logo__name"> <span className="e">E</span>-Shop</span></Link>
             </div>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={3}>
             <div className="nav_options">
               <div>
                 <ul>
@@ -36,7 +68,7 @@ const Navbar = () => {
               </div>
             </div>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={3}>
             <div className="nav_icons">
               <div>
                 <ul>

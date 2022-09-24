@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Navbar from '../components/navbar/Navbar'
 // import styles from '../styles/Home.module.css'
 import { Grid } from "@mui/material"
-import { Feature, Sale, SelectedProducts, Title } from '../components'
+import { ChooseUs, Feature, Sale, SelectedProducts, Title, TodayProducts } from '../components'
 import { data } from '../shared/constants'
 import { allDataTypes } from '../shared/types'
 
@@ -18,7 +18,7 @@ const Home: NextPage<HomeProps> = ({data}) => {
   return (
     <div>
       <div className="home_container">
-        <Navbar />
+        {/* <Navbar /> */}
         <Grid container>
           <div className="hero_container">
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -47,6 +47,8 @@ const Home: NextPage<HomeProps> = ({data}) => {
       </div>
       <Sale />
       <SelectedProducts selected={data.mens} />
+      <ChooseUs />
+      <TodayProducts newProducts={data.mens} />
     </div>
   )
 }

@@ -9,6 +9,8 @@ import createEmotionCache from '../config/createEmotionCache';
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify"
 import Head from 'next/head';
+import { Footer } from '../components/index';
+import Navbar from '../components/navbar/Navbar';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -31,7 +33,9 @@ function MyApp(props: MyAppProps) {
     {/* <ThemeProvider theme={theme}> */}
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       {/* <CssBaseline /> */}
+      <Navbar />
       <Component {...pageProps} />
+      <Footer />
     {/* </ThemeProvider> */}
     <ToastContainer
 position="top-right"

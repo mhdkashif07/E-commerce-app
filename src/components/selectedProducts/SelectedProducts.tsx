@@ -18,9 +18,7 @@ const SelectedProducts: FC<selectedProps> = ({selected}) => {
                     <Grid container spacing={3}>
                         {selected.map((item)=>(
                             <Grid item xs={12} sm={4} md={3} lg={3} key={item.id}>
-                            {/* <Link href={`/product/${item.id}`}> */}
                            <Product item={item} />
-                             {/* </Link> */}
                             </Grid>
                          ))} 
 

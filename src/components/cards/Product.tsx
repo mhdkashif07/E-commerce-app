@@ -3,14 +3,16 @@ import React, { FC } from 'react'
 import select1 from "../../../public/AdobeStock_118120200.png"
 
 interface Props {
+    item: {
     id: number;
     image: string;
     name: string;
     price: string;
     description: string;
+    }
 }
 
-const Product: FC<{item: Props} > = ({item}) => {
+const Product: FC<Props> = ({item}) => {
     
     return (
         <div>
