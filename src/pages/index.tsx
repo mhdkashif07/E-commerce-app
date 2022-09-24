@@ -4,10 +4,17 @@ import Image from 'next/image'
 import Navbar from '../components/navbar/Navbar'
 // import styles from '../styles/Home.module.css'
 import { Grid } from "@mui/material"
-import { Feature } from '../components'
+import { Feature, Sale, SelectedProducts, Title } from '../components'
+import { data } from '../shared/constants'
+import { allDataTypes } from '../shared/types'
 
+interface HomeProps{
+  data: allDataTypes
+}
 
-const Home: NextPage = () => {
+const Home: NextPage<HomeProps> = ({data}) => {
+  console.log(data?.mens);
+  
   return (
     <div>
       <div className="home_container">
@@ -38,8 +45,18 @@ const Home: NextPage = () => {
         </Grid>
         <Feature />
       </div>
+      <Sale />
+      <SelectedProducts selected={data.mens} />
     </div>
   )
+}
+
+export const getStaticProps = async() => {
+  return {
+    props:{
+      data: data
+    }
+  }
 }
 
 export default Home
