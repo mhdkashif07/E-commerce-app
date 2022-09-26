@@ -17,7 +17,7 @@ const Product: FC<Props> = ({item}) => {
     return (
         <div>
             <a href="">
-            <Link href={`/product/${item.id}`} >
+            <Link href={`/productdetail/${item.id}`} >
             <div className="selected_product_item" key="2">
                 <div className="product_img"><img src={`/${item.image}`} /></div>
                 <div className="text_container">

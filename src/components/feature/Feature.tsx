@@ -1,9 +1,11 @@
-import React, { FC } from "react";
+/* eslint-disable react/no-unescaped-entities */
+import React, { FC, useEffect } from "react";
 import { Grid } from "@mui/material";
 import feature1 from "../../../public/Group 179.png";
 import feature2 from "../../../public/noun_Happy_1563582.png";
 import feature3 from "../../../public/noun_guarantee_2519048.png";
 import Image from "next/image";
+import { useInView } from 'react-intersection-observer';
 
 type image = {
     //   image: HTMLImageElement;
@@ -12,6 +14,7 @@ type image = {
   }
 
 const Feature: FC = () => {
+  
   return (
     <div className="features__section">
       <div className="features_container">

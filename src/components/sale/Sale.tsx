@@ -1,17 +1,48 @@
-import React from 'react'
-import { Grid } from "@mui/material";
+import React, { useEffect } from 'react'
+import { duration, Grid } from "@mui/material";
 
 
 
 import sale1 from '../../../public/adult-black-clothes-dark-1040421.png'
 import sale2 from '../../../public/beach-black-pants-black-shirt-2001293.png'
 import sale3 from '../../../public/person-sale-sign-1785138.png'
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
 
 const Sale = () => {
+    const { ref, inView } = useInView({
+        threshold: 0.2
+    })
+    const animation = useAnimation()
+
+    
+
+    useEffect(() => {
+        console.log("This section is in view",inView);
+        if(inView){
+            animation.start({
+                x:0,
+                transition:{
+                    type: 'spring', duration: 2, bounce: 0.4
+                }
+            })
+        }
+
+        if(!inView){
+            animation.start({
+                x: '-100vh'
+            })
+        }
+    }, [inView])
+    
     return (
         <div>
-            <div className="container">
-                <div className="sale_container">
+            <div className="container" ref={ref}>
+                <motion.div className="sale_container"
+                // initial={{x: "-100vh"}}
+                animate={ animation }
+                >
                     <Grid container spacing={3}>
                         <Grid item xs={6} sm={6} md={6} lg={6}>
                             <div className="sale_product_container">
@@ -59,7 +90,7 @@ const Sale = () => {
                         </Grid>
 
                     </Grid>
-                </div>
+                </motion.div>
             </div>
         </div>
     )
