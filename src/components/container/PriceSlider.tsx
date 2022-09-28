@@ -15,14 +15,14 @@ const PriceSlider = () => {
 
   return (
     <Box >
-      <Slider
+      {/* <Slider
         getAriaLabel={() => 'Temperature range'}
         value={value}
         onChange={handleChange}
         valueLabelDisplay="auto"
         getAriaValueText={valuetext}
         text="$"
-      />
+      /> */}
     </Box>
   );
 }

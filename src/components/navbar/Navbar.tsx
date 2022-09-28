@@ -9,12 +9,16 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { MdShoppingCart } from 'react-icons/md'
 import Logo from '../../../public/noun_cloth_2129414.png'
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 
 // import { useSelector } from "react-redux";
 
 const Navbar = () => {
 //   const { cartTotalQuantity } = useSelector((state) => state.cart)
+const router = useRouter()
+console.log(router.route);
+
 
 const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
 
@@ -48,7 +52,7 @@ const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
   }, [clientWindowHeight]);
   return (
     <div className="navbar__list">
-      <div className="navbar_container color-black"   style={{
+      <div className={ router.route != "/" ?  `navbar_container color-black`: "navbar_container"}   style={{
         background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
         padding: `${padding} 0px`,
         boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
