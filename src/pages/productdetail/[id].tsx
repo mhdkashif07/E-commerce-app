@@ -1,6 +1,8 @@
 import { Grid } from "@mui/material";
 import { useRouter } from "next/router";
 import React, { FC, useEffect } from "react";
+import { useAppDispatch } from "../../app/hook";
+import { addToCart, getTotals } from "../../app/slices/cartSlice";
 import { data } from "../../shared/constants";
 import { allDataTypes } from "../../shared/types";
 // import { useParams } from "react-router-dom";
@@ -21,20 +23,27 @@ interface ProductProps {
   }[]
 }
 
+interface Product {
+    id: number;
+    image: string;
+    name: string;
+    price: string;
+    description: string;
+}
+
 const ProductDetail: FC<ProductProps> = ({productDetails}) => {
   console.log(productDetails);
   const { query } = useRouter()
   const productId = query.id;
+  const dispatch =  useAppDispatch()
   
-//   const { id } = useParams();
-//   const dispatch = useDispatch()
-  // const history = useHistory()
 
-//   const handleAddToCart = (product) => {
-//     dispatch(addToCart(product))
-//     dispatch(getTotals())
-//     // history.push("/cart")
-//   }
+
+  const handleAddToCart = (item: Product ) => {
+    dispatch(addToCart(item))
+    dispatch(getTotals())
+    // history.push("/cart")
+  }
 
  
   return (
@@ -61,9 +70,9 @@ const ProductDetail: FC<ProductProps> = ({productDetails}) => {
                 <h2 className="product__price">${item.price}</h2>
                 <h4 className="product__description">{item.description}</h4>
 
-                {/* <div className="cart__btn" onClick={() => handleAddToCart(item) }>
+                <div className="cart__btn" onClick={() => handleAddToCart(item) }>
                   <a href="#">Cart</a>
-                </div> */}
+                </div>
               </div>
             </Grid>
             </Grid>

@@ -1,12 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { getFromLocalStorage } from "../../utils/utils";
 
-
+interface InitialState {
+  cartItems: {
+    id: number;
+    image: string;
+    name: string;
+    price: string;
+    description: string;
+  }[];
+  cartTotalQuantity: number;
+  cartTotalAmount: number;
+}
 
 export const initialState = {
   //get the items from localstorage of the key set in setItems as "cartItems" and set them in cartitems and convert them in javascript
-  cartItems: getFromLocalStorage("cartItems") ? JSON.parse(getFromLocalStorage("cartItems")) : [],
+  //*localStorage.getItem() can return either a string or null. JSON.parse() requires a string, so you should test the result of localStorage.getItem() before you try to use it.
+  cartItems: getFromLocalStorage("cartItems") ? JSON.parse(getFromLocalStorage("cartItems") || '{}') : [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
 };
@@ -16,13 +27,21 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
+      console.log(action.payload);
+      
       //we are checking if the item is already in the cart
       const itemIndex = state.cartItems.findIndex(
-        (item: { id: any; }) => item.id === action.payload.id
+        (item: { id: number; }) => item.id === action.payload.id
       );
+
+     
+      
+
+      
 
       //we are checking if the item is already in the cart we will increase the quantity of the item
       if (itemIndex >= 0) {
+        console.log(itemIndex);
         state.cartItems[itemIndex].cartQuantity += 1;
         toast.info(`${action.payload.name} quntity is increased`, {
           position: "bottom-left",
@@ -87,7 +106,7 @@ const cartSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
 
-    getTotals(state, action) {
+    getTotals(state, action: PayloadAction) {
       //reduce array methods accepts two parameters first is callback function and sectond is initial value 
       //cartTotal will hold the initial values of total and quantity
       //cartItem will be the item which we will give each time of iteration
