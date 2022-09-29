@@ -563,9 +563,18 @@ ul{
 
 /*******  login styles  ******/
 .login_container{
-    background-color: aqua;
+    /* background-color: aqua; */
     margin: auto;
 }
+
+.login_using_container{
+    display: flex;
+}
+
+.login_using_container div{
+    margin: 0 10px;
+}
+
 .center_form{
     width: fit-content;
     margin: auto;
@@ -573,7 +582,7 @@ ul{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 .login_form{
@@ -584,7 +593,7 @@ ul{
 }
 
 .checkbox_container{
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
     width: 100%;
     display: flex;
     justify-content: space-between;

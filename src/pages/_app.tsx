@@ -33,7 +33,7 @@ function MyApp(props: MyAppProps) {
 
         <title>{"E-Commerse Website"}</title>
       </Head>
-    {/* <ThemeProvider theme={theme}> */}
+    <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       {/* <CssBaseline /> */}
       <Provider store={store}>
@@ -41,7 +41,7 @@ function MyApp(props: MyAppProps) {
       <Component {...pageProps} />
       <Footer />
       </Provider>
-    {/* </ThemeProvider> */}
+    </ThemeProvider>
     <ToastContainer
 position="top-right"
 autoClose={5000}

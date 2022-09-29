@@ -9,7 +9,7 @@ export { default as PrimaryTitle } from "./title/PrimaryTitle";
 export { default as TodayProducts } from "./todayProducts/TodayProducts";
 export { default as Footer } from "./footer/Footer";
 export { default as Sidebar } from "./sidebars/Sidebar";
-
+export { default as LoginForm } from "./forms/LoginForm";
 
 
 

@@ -10,7 +10,8 @@ import { MdShoppingCart } from 'react-icons/md'
 import Logo from '../../../public/noun_cloth_2129414.png'
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useAppSelector } from "../../app/hook";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
+import { getTotals } from "../../app/slices/cartSlice";
 
 
 // import { useSelector } from "react-redux";
@@ -18,6 +19,12 @@ import { useAppSelector } from "../../app/hook";
 const Navbar = () => {
   const { cartTotalQuantity } = useAppSelector((state) => state.cart)
   const router = useRouter()
+  const dispatch =  useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getTotals())
+  }, [])
+  
 
 
 const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
@@ -63,8 +70,8 @@ const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
         <Grid container alignItems="center" >
           <Grid item xs={3} sm={3}  md={4} lg={4} xl={4}>
             <div className="nav_logo">
-              <Link href="/"><img src={Logo.src} alt="" /></Link>
-              <Link href="/"><span className="logo__name"> <span className="e">E</span>-Shop</span></Link>
+              <Link href="/"><a><img src={Logo.src} alt="" /></a></Link>
+              <Link href="/"><a href=""><span className="logo__name"> <span className="e">E</span>-Shop</span></a></Link>
             </div>
           </Grid>
           <Grid item md={4}>

@@ -13,6 +13,6 @@ palette: {
    error: {
    main: red.A400,
    },
-  },
+  }
 });
 export default theme;
