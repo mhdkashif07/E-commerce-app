@@ -1,34 +1,36 @@
 import React, { useEffect } from "react";
-// import { Header } from "../components/Header";
-import { useSelector, useDispatch } from "react-redux";
-// import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Grid } from "@mui/material";
-// import { removeFromCart, clearCart, decreaseCart, addToCart, getTotals } from "../../app/slices/cartSlice";
+import { removeFromCart, clearCart, decreaseCart, addToCart, getTotals } from "../../app/slices/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hook";
 import Link from "next/link";
 
 const Cart = () => {
   const cart = useAppSelector((state) => state.cart);
+  console.log(cart.cartTotalAmount);
+  
   const dispatch = useAppDispatch()
 
 
-//   useEffect(() => {
-//    dispatch(getTotals())
-//   }, [cart, dispatch])
+  useEffect(() => {
+   dispatch(getTotals())
+  }, [cart, dispatch])
 
   //function will get an id which wil be remove from cart items
-//   const handleRemoveItem = (item) => {
-//     dispatch(removeFromCart(item))
-//   }
+  const handleRemoveItem = (item: number) => {
+    dispatch(removeFromCart(item))
+  }
 
-//   const handleDecreaseCart = (item) => {
-//     dispatch(decreaseCart(item))
-//   }
+  const handleDecreaseCart = (item: number) => {
+    dispatch(decreaseCart(item))
+  }
 
-//   const handleIncreaseCart = (item) => {
-//     dispatch(addToCart(item))
-//   }
+  const handleIncreaseCart = (item: number) => {
+    dispatch(addToCart(item))
+    localStorage.setItem("nextjs", "store value in localstorage")
+  }
+
+
   return (
     <div className="cart__section container">
       <div className="main__section ">
@@ -66,7 +68,7 @@ const Cart = () => {
               </div>
 
 
-              {/* <div className="cart__items">
+              <div className="cart__items">
                 <Grid container>
                   {cart?.cartItems &&
                     cart?.cartItems?.map((item: any) => (
@@ -151,7 +153,7 @@ const Cart = () => {
                       </Grid>
                     ))}
                 </Grid>
-              </div> */}
+              </div>
 
               <div className="cart__summary">
                 <div className="clear__cart">
@@ -168,7 +170,7 @@ const Cart = () => {
                     <button className="checkout__btn">Check out</button>
                   </div>
                   <div className="continue__shopping text-start">
-                    <Link href="/"><h5><ArrowBackIcon />continue shopping</h5></Link>
+                    <Link href="/"><a href=""><h5><ArrowBackIcon />continue shopping</h5></a></Link>
                   </div>
                 </div>
               </div>

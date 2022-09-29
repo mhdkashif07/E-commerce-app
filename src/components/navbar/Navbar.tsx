@@ -10,14 +10,14 @@ import { MdShoppingCart } from 'react-icons/md'
 import Logo from '../../../public/noun_cloth_2129414.png'
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAppSelector } from "../../app/hook";
 
 
 // import { useSelector } from "react-redux";
 
 const Navbar = () => {
-//   const { cartTotalQuantity } = useSelector((state) => state.cart)
-const router = useRouter()
-console.log(router.route);
+  const { cartTotalQuantity } = useAppSelector((state) => state.cart)
+  const router = useRouter()
 
 
 const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
@@ -85,7 +85,7 @@ const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
                   <li>
                     <a href=" "><SearchOutlined /></a>
                   </li>
-                  <li className="cart__logo"><Link href="/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">2</span></li>
+                  <li className="cart__logo"><Link href="/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></li>
                   <li><Link href="/login"><a href=""><BsFillPersonFill /></a></Link></li> 
                 </ul>
               </div>
