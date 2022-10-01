@@ -82,7 +82,7 @@ const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
                 <ul>
                   <li><Link href='/men-products'>Men</Link></li>
                   <li><Link href='/women-products'>Women</Link></li>
-                  <li><Link href='/kids-products'>Kids</Link></li>
+                  <li><Link href='/kids'>Kids</Link></li>
                 </ul>
               </div>
             </div>
