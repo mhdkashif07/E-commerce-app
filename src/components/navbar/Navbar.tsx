@@ -55,12 +55,14 @@ const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
       setPadding(paddingVar);
       setBoxShadow(boxShadowVar);
       setScroll(true)
+      console.log(backgroundTransparacy);
+      
     }
   }, [clientWindowHeight]);
   return (
     <div className="navbar__list">
-      <div className={ router.route != "/" ?  `navbar_container color-black`: "navbar_container"}   style={{
-        background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
+      <div className={ router.route != "/" || backgroundTransparacy > 0 ?  `navbar_container color-black`: "navbar_container"}   style={{
+        background: `rgba(245, 245, 245, ${backgroundTransparacy})`,
         padding: `${padding} 0px`,
         boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
         color: "black"

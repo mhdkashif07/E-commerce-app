@@ -41,7 +41,7 @@ const Cart = () => {
               <Link href="/"><h5><ArrowBackIcon />continue shopping</h5></Link>
             </div>
           ) : (
-            <div>
+            <div data-aos="zoom-in" data-aos-duration="400">
               <div className="titles">
                 <Grid container>
                   <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
@@ -160,7 +160,7 @@ const Cart = () => {
                   {/* <button className="clear__btn" onClick={() => dispatch(clearCart())}>Clear Cart</button> */}
                 </div>
 
-                <div className="cart__checkout">
+                <div className="cart__checkout" data-aos="zoom-in" data-aos-duration="400">
                   <div className="subtotal">
                     <span><h3>Subtotal</h3></span>
                     <span className="amount"><h3>$ {cart.cartTotalAmount}</h3></span>

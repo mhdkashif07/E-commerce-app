@@ -47,7 +47,7 @@ const ProductDetail: FC<ProductProps> = ({productDetails}) => {
 
  
   return (
-    <div className="singleProduct__page container">
+    <div className="singleProduct__page container" data-aos="zoom-in" data-aos-duration="400">
     <div className="singleproduct__section main__section">
       <div className="single__product container ">
         {productDetails.filter((item) => item.id == Number(productId)).map((item) => (

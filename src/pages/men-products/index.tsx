@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import React, { FC } from 'react'
 // import { Header } from "../components/Header";
 import { Sidebar } from "../../components/index";
@@ -16,10 +17,10 @@ const index: FC<PageProps> = ({data}) => {
     <div className='container'>
       <div className="main__section">
         <div className="men__products">
-          <div className="sidebar">
+          <div className="sidebar" data-aos="zoom-in" data-aos-duration="400">
             <Sidebar />
           </div>
-          <div className="products">
+          <div className="products" data-aos="zoom-in" data-aos-duration="400">
             <MenClothesList menClothes={data.mens} />
           </div>
         </div>
@@ -28,7 +29,7 @@ const index: FC<PageProps> = ({data}) => {
   )
 }
 
-export const getStaticProps = async() => {
+export const getStaticProps: GetStaticProps = async() => {
     return {
       props:{
         data: data

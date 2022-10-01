@@ -67,7 +67,7 @@ const Footer: FC = () => {
               <div className="right_side_title"><p>Contact</p></div>
               <div className="right_side_options">
                 <ul>
-                  <li><a href="">store@uikit.com</a></li>
+                  <li><a href="">mhdkashif07@gmail.com</a></li>
                   <li><a href="">Hotline: +1 131 138 138</a></li>
                 </ul>
               </div>

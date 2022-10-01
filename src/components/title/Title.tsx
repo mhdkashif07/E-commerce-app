@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
+// import AOS from "aos"
 
 type Props = {
     title: string;
@@ -9,9 +10,16 @@ type Props = {
 
 
 const Title: FC<Props> = (props) => {
+
+//     useEffect(() => {
+//   AOS.init();
+// }, []);
+
     return (
-        <div className='title__container'>
-            <div className="show_more">
+        <div className='title__container aos-item' 
+        data-aos="fade-up"
+         >
+            <div className="show_more" >
                 <div className="selected_title"><p>{props.title}</p></div>
                 { props.link ? (
                     <div className="show_more_button"><Link href={props.link}>{props.button}</Link></div>
