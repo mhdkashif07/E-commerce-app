@@ -92,7 +92,7 @@ const [clientWindowHeight, setClientWindowHeight] = useState<number>(0);
               <div>
                 <ul>
                   <li>
-                    <a href=" "><SearchOutlined /></a>
+                    <Link href="/"><a href=""><SearchOutlined /></a></Link>
                   </li>
                   <li className="cart__logo"><Link href="/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></li>
                   <li><Link href="/login"><a href=""><BsFillPersonFill /></a></Link></li> 
