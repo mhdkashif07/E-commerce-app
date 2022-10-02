@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React, { FC, useEffect } from "react";
 import { useAppDispatch } from "../../app/hook";
