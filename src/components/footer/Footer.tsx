@@ -8,7 +8,7 @@ const Footer: FC = () => {
     <div>
       <div className="footer_container">
         <Grid container>
-          <Grid item xs={4} sm={4} md={4} lg={4}>
+          <Grid item xs={10} sm={10} md={4} lg={4} xl={4}>
             <div className="first_item">
               <div className="footer_logo">E-shop</div>
               <div className="footer_text">
@@ -32,7 +32,7 @@ const Footer: FC = () => {
             </div>
           </Grid>
 
-          <Grid item xs={2} sm={2} md={2} lg={2} className="right_side_footer">
+          <Grid item xs={10} sm={10} md={2} lg={2} className="right_side_footer">
             <div>
               <div className="right_side_title"><p>Shooping online</p></div>
               <div className="right_side_options">
@@ -47,7 +47,7 @@ const Footer: FC = () => {
             </div>
           </Grid>
 
-          <Grid item xs={2} sm={2} md={2} lg={2} className="right_side_footer">
+          <Grid item xs={10} sm={10} md={2} lg={2} className="right_side_footer">
             <div>
               <div className="right_side_title"><p>Information</p></div>
               <div className="right_side_options">
@@ -62,7 +62,7 @@ const Footer: FC = () => {
             </div>
           </Grid>
           
-          <Grid item xs={2} sm={2} md={2} lg={2} className="right_side_footer">
+          <Grid item xs={10} sm={10} md={2} lg={2} className="right_side_footer">
             <div>
               <div className="right_side_title"><p>Contact</p></div>
               <div className="right_side_options">

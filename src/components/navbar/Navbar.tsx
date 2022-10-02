@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { GiHamburgerMenu, GiTireIronCross } from "react-icons/gi"
 
 
 import { Grid } from "@mui/material";
@@ -13,6 +14,7 @@ import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { getTotals } from "../../app/slices/cartSlice";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
+// import { MenuButton } from "../buttons/MenuButton";
 
 const links = [
   { name: "Home", to: "#", id: 1 },
@@ -180,7 +182,7 @@ const Navbar = () => {
                     </motion.aside>
                   )}
                 </AnimatePresence>
-                <button onClick={() => cycleOpen()}>{open ? "Close" : "Open"}</button>
+                <button onClick={() => cycleOpen()}>{ open ? <GiTireIronCross size={22} /> : <GiHamburgerMenu size={25} />}</button>
 
               </div>
               <div className="nav_icons">
