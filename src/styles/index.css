@@ -924,7 +924,7 @@ box-shadow: 15px 10px 30px -8px rgba(0,0,0,0.30);
     transform: scale(1.2);
   }
   
-  .cart__section .main__section{
+  .layout .main__section{
     padding-top: 10px;
   }
 
