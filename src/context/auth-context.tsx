@@ -23,9 +23,20 @@ type defaultValues = {
     isUserAuthenticated: () => true | undefined;
  }
 
+ const values: defaultValues = {
+    authState:
+     { 
+       token: ""
+    },
+   setAuthState: (userAuthInfo) => {},
+   isUserAuthenticated: () => true || {},
+}
+
+
+
 
  
-export const AuthContext = React.createContext<defaultValues>({  } as unknown as defaultValues);
+export const AuthContext = React.createContext<defaultValues>(values as defaultValues);
 
 //const { Provider } = AuthContext;
 

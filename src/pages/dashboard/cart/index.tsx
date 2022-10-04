@@ -1,10 +1,10 @@
 import React, { useEffect, ReactElement } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Grid } from "@mui/material";
-import { removeFromCart, clearCart, decreaseCart, addToCart, getTotals } from "../../app/slices/cartSlice";
-import { useAppDispatch, useAppSelector } from "../../app/hook";
+import { removeFromCart, clearCart, decreaseCart, addToCart, getTotals } from "../../../app/slices/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hook";
 import Link from "next/link";
-import Layout from "../dashboard";
+import Layout from "..";
 
 
 const Cart = () => {
@@ -89,7 +89,7 @@ const Cart = () => {
                             <div className="cart__image">
                               <div>
                                 <img
-                                  src={item.image}
+                                  src={`../${item.image}`}
                                   alt="cart__img"
                                   style={{ width: "120px", height: "120px" }}
                                 />

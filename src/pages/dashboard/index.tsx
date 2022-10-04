@@ -1,11 +1,21 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../context/auth-context";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
     const router = useRouter()
+    const authContext = useContext(AuthContext);
+  
+  useEffect(() => {
+    // checks if the user is authenticated
+    console.log(authContext.isUserAuthenticated());
+    authContext.isUserAuthenticated()
+    ? router.push("/dashboard")
+    : router.push("/login");
+  }, []);
     useEffect(() => {
-        router.push("/cart")
+        router.push("/dashboard/cart")
     },[])
     return (
         <div className="containe">
@@ -13,7 +23,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <div className="layout">
                     <div className="dashboard__sidebar">
                         <ul>
-                            <li><Link href="/cart"><a href="">Cart</a></Link></li>
+                            <li><Link href="/dashboard/cart"><a href="">Cart</a></Link></li>
                             <li><Link href="/dashboard/profile"><a href="">Profile</a></Link></li>
                         </ul>
                     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 // import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import clsx from "clsx";
@@ -15,6 +15,8 @@ import {  makeStyles, createStyles } from '@mui/styles';
 import Link from "next/link";
 import { SelectChangeEvent } from "@mui/material";
 import PrimaryButton from "../buttons/PrimaryButton";
+import { AuthContext } from "../../context/auth-context";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
   root: {
@@ -53,6 +55,11 @@ interface Styles {
 }
 
 const LoginForm = () => {
+  //get auth context
+  const authContext = useContext(AuthContext);
+
+  const router = useRouter()
+
   const classes = useStyles();
   const [values, setValues] = React.useState({
     amount: "",
@@ -78,6 +85,20 @@ const LoginForm = () => {
   const handleMouseDownPassword = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
   };
+
+  //handle login
+  const handleLogin = () => {
+    console.log("Login");
+    console.log(authContext.isUserAuthenticated());
+    // authContext.setAuthState("alskdjf;akdsjfl;kasjdf")
+    
+     sessionStorage.setItem("siteJWT", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjMwZTg4OGVmYzc1NDE3ZGQyOGFkNyIsImlhdCI6MTY2MjM3MDI5NCwiZXhwIjoxNjcwMTQ2Mjk0fQ.y7xVab6ROnrl3a8m6MV_ym1qbzvID_UDXrE_dx7_Lj4" )
+     localStorage.setItem("isAuthenticated", JSON.stringify(true))
+     router.push("/dashboard")
+    
+  }
+
+
   return (
     <div className="login__section">
       {/* <div className="navbar__shadow color-black">
@@ -136,7 +157,7 @@ const LoginForm = () => {
                 </FormControl>
 
                 <div style={{ marginTop: "15px" }}>
-                  <Link href="/dashboard"><a href=""><PrimaryButton text="Login" /></a></Link>
+                  <Link href="/dashboard"><button onClick={() => handleLogin()} ><PrimaryButton text="Login" /></button></Link>
                 </div>
 
                 <div className="checkbox_container">
