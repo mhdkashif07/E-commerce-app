@@ -9,7 +9,8 @@ import { ChooseUs, Feature, Sale, SelectedProducts, Title, TodayProducts } from 
 import { data } from '../shared/constants'
 import { allDataTypes } from '../shared/types'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
+import { AuthContext } from '../context/auth-context'
 // import  AOS  from "aos"
 
 
@@ -18,6 +19,9 @@ interface HomeProps{
 }
 
 const Home: NextPage<HomeProps> = ({data}) => {
+  const useAuth = useContext(AuthContext)
+  console.log(useAuth.authState);
+  
   return (
     <div>
       <div className="home_container">

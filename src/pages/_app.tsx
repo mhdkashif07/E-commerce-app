@@ -19,6 +19,7 @@ import { useRef, useEffect, ReactElement, ReactNode } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import AOS from "aos"
 import { NextPage } from "next";
+import { AuthProvider } from "../context/auth-context";
 
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -79,9 +80,11 @@ function MyApp(props: AppPropsWithLayout) {
             watch={[]}
             containerRef={containerRef}>
             <main data-scroll-container ref={containerRef}> */}
-              <Navbar />
+            <AuthProvider>
+            < Navbar />
               {getLayout(<Component {...pageProps} />)}
               <Footer />
+            </AuthProvider>
             {/* </main>
           </LocomotiveScrollProvider> */}
         </Provider>
