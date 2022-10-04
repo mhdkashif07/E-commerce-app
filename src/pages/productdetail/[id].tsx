@@ -54,17 +54,17 @@ const ProductDetail: FC<ProductProps> = ({productDetails}) => {
         {productDetails.filter((item) => item.id == Number(productId)).map((item) => (
           <div className="product" key={item.id}>
             <Grid container spacing={3}>
-            <Grid item xs={1} sm={1} md={1} lg={1} xl={1}>
+            <Grid item xs={4} sm={4} md={1} lg={1} xl={1}>
               <div className="product__img">
                 <img src={`/${item.image}`} alt="" />
               </div>
             </Grid>
-            <Grid item xs={4} sm={4} md={5} lg={4} xl={4}>
+            <Grid item xs={8} sm={8} md={5} lg={4} xl={4}>
               <div className="product__img">
                 <img src={`/${item.image}`} alt="" style={{height: '450px'}} />
               </div>
             </Grid>
-            <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+            <Grid item xs={12} sm={10} md={6} lg={6} xl={6}>
               <div className="product__details">
                 <h4 className="product__discount">sale</h4>
                 <h1 className="product__name">{item.name}</h1>

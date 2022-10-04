@@ -14,7 +14,7 @@ const MenClothesList: FC<MenProps> = ({ menClothes }) => {
             <div className="selected_product_container">
                 <Grid container spacing={3}>
                     {menClothes.map((item) => (
-                        <Grid item xs={6} sm={4} md={4} lg={4} xl={4} key={item.id}>
+                        <Grid item xs={12} sm={10} md={4} lg={4} xl={4} key={item.id}>
                             <Product item={item} />
                         </Grid>
                     ))}

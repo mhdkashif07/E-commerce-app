@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, ReactElement } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Grid } from "@mui/material";
 import { removeFromCart, clearCart, decreaseCart, addToCart, getTotals } from "../../app/slices/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hook";
 import Link from "next/link";
+import Layout from "../dashboard";
+
 
 const Cart = () => {
   const cart = useAppSelector((state) => state.cart);
@@ -44,19 +46,19 @@ const Cart = () => {
             <div data-aos="zoom-in" data-aos-duration="400">
               <div className="titles">
                 <Grid container>
-                  <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Grid item xs={4} sm={4} md={6} lg={6} xl={6}>
                     <h3 className="product__title">Product</h3>
                   </Grid>
                   <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
                     <h3 className="product__price-title">Price</h3>
                   </Grid>
-                  <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                  <Grid item xs={3} sm={3} md={2} lg={2} xl={2}>
                     <h3 className="product__quantity">Quantity</h3>
                   </Grid>
                   <Grid
                     item
-                    xs={2}
-                    sm={2}
+                    xs={3}
+                    sm={3}
                     md={2}
                     lg={2}
                     xl={2}
@@ -83,7 +85,7 @@ const Cart = () => {
                         style={{ padding: "15px 0", borderTop: "1px solid grey" }}
                       >
                         <Grid container>
-                          <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                          <Grid item xs={10} sm={6} md={6} lg={6} xl={6}>
                             <div className="cart__image">
                               <div>
                                 <img
@@ -115,7 +117,7 @@ const Cart = () => {
                           </Grid>
                           <Grid
                             item
-                            xs={3}
+                            xs={6}
                             sm={3}
                             md={3}
                             lg={3}
@@ -134,7 +136,7 @@ const Cart = () => {
                           </Grid>
                           <Grid
                             item
-                            xs={1}
+                            xs={6}
                             sm={1}
                             md={1}
                             lg={1}
@@ -182,5 +184,10 @@ const Cart = () => {
     </div>
   );
 };
+
+Cart.getLayout = function getLayout(page: ReactElement){
+  return  <Layout>{page}</Layout>
+}
+
 
 export default Cart;

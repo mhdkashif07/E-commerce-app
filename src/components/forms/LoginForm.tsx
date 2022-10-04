@@ -14,6 +14,7 @@ import Checkbox from "@mui/material/Checkbox";
 import {  makeStyles, createStyles } from '@mui/styles';
 import Link from "next/link";
 import { SelectChangeEvent } from "@mui/material";
+import PrimaryButton from "../buttons/PrimaryButton";
 
 const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
   root: {
@@ -133,6 +134,10 @@ const LoginForm = () => {
                    
                   />
                 </FormControl>
+
+                <div style={{ marginTop: "15px" }}>
+                  <Link href="/dashboard"><a href=""><PrimaryButton text="Login" /></a></Link>
+                </div>
 
                 <div className="checkbox_container">
                   <div className="checkbox">

@@ -831,7 +831,7 @@ ul{
     border: none;
     padding: 0.5rem 1rem;
     top: 0;
-    right: 20px;
+    right: 0;
     background: transparent;
 }
 
@@ -858,6 +858,45 @@ aside {
     font-weight: 600;
     display: block;
     margin: 20px;
+  }
+
+
+  /* Primary button styles */
+
+  .primary__button button{
+    background-color: rgb(48, 48, 148);
+    padding: 0px 40px;
+    /* width: 200px; */
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    color: #ffff;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+
+  /* dashboard layout styles */
+
+  .layout{
+    display: flex;
+    /* background-color: aqua; */
+  }
+
+  .layout .dashboard__sidebar{
+    background-color: #ffff;
+    height: 100vh;
+    width: 270px;
+    position: fixed;
+    /* border-radius: 24px;
+background: #e0e0e0; */
+box-shadow: 15px 10px 30px -8px rgba(0,0,0,0.30);
+  }
+
+  .layout__content--main{
+    /* background-color: #FBB03B; */
+    width: 100%;
+    padding-left: 230px;
   }
   
 
@@ -904,6 +943,12 @@ aside {
     }
     .hamburger{
         display: inline;
+    }
+    .container {
+        padding: 30px 20px 30px 20px;
+    }
+    .single__product.container {
+        padding: 0;
     }
   }
   

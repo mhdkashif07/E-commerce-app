@@ -15,21 +15,32 @@ import Navbar from '../components/navbar/Navbar';
 import { Provider } from "react-redux";
 import store from "../app/store"
 import 'aos/dist/aos.css';
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, ReactElement, ReactNode } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import AOS from "aos"
+import { NextPage } from "next";
 
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-interface MyAppProps extends AppProps {
+// interface MyAppProps extends AppProps {
+//   emotionCache?: EmotionCache;
+// }
+
+type NextPageWithLayout = NextPage  & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
   emotionCache?: EmotionCache;
 }
 
-function MyApp(props: MyAppProps) {
+function MyApp(props: AppPropsWithLayout) {
   const containerRef = useRef(null);
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const getLayout = Component.getLayout?? ((page) => page)
   useEffect(() => {
     AOS.init({
         // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
@@ -69,7 +80,7 @@ function MyApp(props: MyAppProps) {
             containerRef={containerRef}>
             <main data-scroll-container ref={containerRef}> */}
               <Navbar />
-              <Component {...pageProps} />
+              {getLayout(<Component {...pageProps} />)}
               <Footer />
             {/* </main>
           </LocomotiveScrollProvider> */}

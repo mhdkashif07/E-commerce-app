@@ -46,7 +46,7 @@ const Sale = () => {
                 //data-aos="fade-up-right" data-aos-delay="30" 
                 >
                     <Grid container spacing={3}>
-                        <Grid item xs={6} sm={6} md={6} lg={6}  data-aos="fade-up-right" data-aos-delay="300" >
+                        <Grid item xs={12} sm={10} md={6} lg={6}  data-aos="fade-up-right" data-aos-delay="300" >
                             <div className="sale_product_container">
                                 <div className="product_img"><img src={sale1.src}/></div>
                                 <div className="text_container">
@@ -61,7 +61,7 @@ const Sale = () => {
                             </div>
                         </Grid>
 
-                        <Grid item xs={3} sm={3} md={3} lg={3} data-aos="fade-up-right" data-aos-delay="200">
+                        <Grid item xs={12} sm={10} md={3} lg={3} data-aos="fade-up-right" data-aos-delay="200">
                             <div className="sale_product_container">
                                 <div className="product_img"><img src={sale2.src} /></div>
                                 <div className="text_container">
@@ -76,7 +76,7 @@ const Sale = () => {
                             </div>
                         </Grid>
 
-                        <Grid item xs={3} sm={3} md={3} lg={3} data-aos="fade-up-right" data-aos-delay="100">
+                        <Grid item xs={12} sm={10} md={3} lg={3} data-aos="fade-up-right" data-aos-delay="100">
                             <div className="sale_product_container">
                                 <div className="product_img"><img src={sale3.src} /></div>
                                 <div className="text_container">
