@@ -93,17 +93,20 @@ const Navbar = () => {
 
   return (
     <div className="navbar__list">
-      <div className={router.route != "/" || backgroundTransparacy > 0 ? `navbar_container color-black` : "navbar_container"} style={{
-        background: `rgba(245, 245, 245, ${backgroundTransparacy})`,
-        padding: `${padding} 0px`,
-        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
-        color: "black"
-      }}>
+      <div 
+      className="navbar_container"
+      // className={router.route != "/" || backgroundTransparacy > 0 ? `navbar_container color-black` : "navbar_container"} style={{
+      //   background: `rgba(245, 245, 245, ${backgroundTransparacy})`,
+      //   padding: `${padding} 0px`,
+      //   boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+      //   color: "black"
+      // }}
+      >
 
 
 
 
-        <Grid container alignItems="center" className="navbar_container" >
+        <Grid container alignItems="center" >
           <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
             <div className="nav_logo">
               <Link href="/"><a><img src={Logo.src} alt="" /></a></Link>
