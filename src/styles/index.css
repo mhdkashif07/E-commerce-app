@@ -932,21 +932,21 @@ box-shadow: 15px 10px 30px -8px rgba(0,0,0,0.30);
 /* Media Queries */
 
 @media screen and (max-width:1300px){
-    .main{
+    /* .main{
         margin-left: 50px;
-    }
+    } */
   }
   
   @media screen and (max-width:1170px){
-    .main{
+    /* .main{
         margin-left: 50px;
-    }
+    } */
   }
   
   @media screen and (max-width:1000px){
-    .main{
+    /* .main{
         margin-left: 100px;
-    }
+    } */
   }
   
   @media screen and (max-width:800px){
