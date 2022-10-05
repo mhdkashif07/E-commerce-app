@@ -94,13 +94,12 @@ const Navbar = () => {
   return (
     <div className="navbar__list">
       <div 
-      className="navbar_container"
-      // className={router.route != "/" || backgroundTransparacy > 0 ? `navbar_container color-black` : "navbar_container"} style={{
-      //   background: `rgba(245, 245, 245, ${backgroundTransparacy})`,
-      //   padding: `${padding} 0px`,
-      //   boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
-      //   color: "black"
-      // }}
+      className={router.route != "/" || backgroundTransparacy > 0 ? `navbar_container color-black` : "navbar_container"} style={{
+        background: `rgba(245, 245, 245, ${backgroundTransparacy})`,
+        padding: `${padding} 0px`,
+        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+        color: "black"
+      }}
       >
 
 
