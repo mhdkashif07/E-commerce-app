@@ -1,5 +1,5 @@
-import "../styles/locomotive-scroll.css";
 import '../styles/globals.css'
+// import "../styles/locomotive-scroll.css";
 import type { AppProps } from 'next/app'
 import '../styles/index.css'
 import { ThemeProvider } from '@mui/material/styles';
