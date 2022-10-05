@@ -98,7 +98,6 @@ const Navbar = () => {
         background: `rgba(245, 245, 245, ${backgroundTransparacy})`,
         padding: `${padding} 0px`,
         boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
-        color: "black"
       }}
       >
 
