@@ -103,7 +103,7 @@ const Navbar = () => {
 
 
 
-        <Grid container alignItems="center" >
+        <Grid container alignItems="center" className="navbar_container" >
           <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
             <div className="nav_logo">
               <Link href="/"><a><img src={Logo.src} alt="" /></a></Link>
