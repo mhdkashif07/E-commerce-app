@@ -16,6 +16,7 @@
     "@mui/styles": "^5.10.7",
     "@reduxjs/toolkit": "^1.8.5",
     "aos": "^2.3.4",
+    "firebase": "^9.10.0",
     "framer-motion": "^7.3.6",
     "locomotive-scroll": "^4.1.4",
     "next": "12.3.1",

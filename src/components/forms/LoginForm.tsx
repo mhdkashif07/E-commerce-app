@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { MouseEvent, useContext } from "react";
 // import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import clsx from "clsx";
@@ -17,6 +17,9 @@ import { SelectChangeEvent } from "@mui/material";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { AuthContext } from "../../context/auth-context";
 import { useRouter } from "next/router";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../utils/init-firebase";
+import { useAppDispatch } from "../../app/hook";
 
 const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
   root: {
@@ -54,10 +57,15 @@ interface Styles {
     useStyles: () => never
 }
 
+type User = {
+  accessToken: string
+}
+
 const LoginForm = () => {
   //get auth context
   const authContext = useContext(AuthContext);
 
+  const dispatch = useAppDispatch()
   const router = useRouter()
 
   const classes = useStyles();
@@ -87,23 +95,32 @@ const LoginForm = () => {
   };
 
   //handle login
-  const handleLogin = () => {
+  const handleLogin = async(e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     console.log("Login");
-    console.log(authContext.isUserAuthenticated());
-    // authContext.setAuthState("alskdjf;akdsjfl;kasjdf")
-    
-     sessionStorage.setItem("siteJWT", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjMwZTg4OGVmYzc1NDE3ZGQyOGFkNyIsImlhdCI6MTY2MjM3MDI5NCwiZXhwIjoxNjcwMTQ2Mjk0fQ.y7xVab6ROnrl3a8m6MV_ym1qbzvID_UDXrE_dx7_Lj4" )
-     localStorage.setItem("isAuthenticated", JSON.stringify(true))
-     router.push("/dashboard")
+
+    //login with firebase
+    try {
+      const response = await signInWithEmailAndPassword(auth, "hello@gmail.com", "12345678");
+      console.log(response.user);
+      const user: any = response.user 
+      if(response.user != null){
+          sessionStorage.setItem("accessToken", user.accessToken )
+          localStorage.setItem("isAuthenticated", JSON.stringify(true))
+          // dispatch(isSuccess)
+          router.push("/dashboard")
+
+      }
+      
+  } catch (error) {
+      console.log(error);  
+  }
     
   }
 
 
   return (
     <div className="login__section">
-      {/* <div className="navbar__shadow color-black">
-        <Header />
-      </div> */}
       <div className="container">
         <div className="login_container">
           {/* <Link href="/home"><h1>This is login page</h1></Link> */}
@@ -156,8 +173,15 @@ const LoginForm = () => {
                   />
                 </FormControl>
 
-                <div style={{ marginTop: "15px" }}>
-                  <Link href="/dashboard"><button onClick={() => handleLogin()} ><PrimaryButton text="Login" /></button></Link>
+                <div style={{ marginTop: "15px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  
+                 <div>
+                 <button onClick={(e) => handleLogin(e)} ><PrimaryButton text="Login" /></button>
+                 </div>
+                <h3 style={{ margin: "7px 0 "}}>Or</h3>
+                <div>
+                <Link href="/signup"><button><PrimaryButton text="Sing Up" /></button></Link>
+                </div>
                 </div>
 
                 <div className="checkbox_container">

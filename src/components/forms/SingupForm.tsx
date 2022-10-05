@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { ReactEventHandler, ReactHTMLElement, useContext, MouseEvent } from "react";
 // import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import clsx from "clsx";
@@ -17,6 +17,12 @@ import { SelectChangeEvent } from "@mui/material";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { AuthContext } from "../../context/auth-context";
 import { useRouter } from "next/router";
+
+import { auth } from '../../utils/init-firebase'
+import {
+  createUserWithEmailAndPassword
+} from 'firebase/auth'
+
 
 const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
   root: {
@@ -50,9 +56,6 @@ const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
   },
 }));
 
-interface Styles {
-    useStyles: () => never
-}
 
 const SingupForm = () => {
   //get auth context
@@ -86,16 +89,22 @@ const SingupForm = () => {
     event.preventDefault();
   };
 
-  //handle login
-  const handleLogin = () => {
-    console.log("Login");
-    console.log(authContext.isUserAuthenticated());
-    // authContext.setAuthState("alskdjf;akdsjfl;kasjdf")
-    
-     sessionStorage.setItem("siteJWT", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjMwZTg4OGVmYzc1NDE3ZGQyOGFkNyIsImlhdCI6MTY2MjM3MDI5NCwiZXhwIjoxNjcwMTQ2Mjk0fQ.y7xVab6ROnrl3a8m6MV_ym1qbzvID_UDXrE_dx7_Lj4" )
-     localStorage.setItem("isAuthenticated", JSON.stringify(true))
-     router.push("/dashboard")
-    
+  //handle sign up
+  const handleSignup = async(e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    console.log("sign up");
+    //router.push("/login")
+    try {
+        const response = await createUserWithEmailAndPassword(auth, "hello@gmail.com", "12345678");
+        console.log(response.user);
+        if(response.user != null){
+            router.push("/login")
+        }
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
   }
 
 
@@ -156,9 +165,15 @@ const SingupForm = () => {
                   />
                 </FormControl>
 
-                <div style={{ marginTop: "15px" }}>
-                  <Link href="/dashboard"><button onClick={() => handleLogin()} ><PrimaryButton text="Sign Up" /></button></Link>
-                </div>
+                <div style={{ marginTop: "15px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <div>
+                  <button onClick={(e) => handleSignup(e)} ><PrimaryButton text="Sign Up" /></button>
+                  </div>
+                 <h3 style={{ margin: "7px 0 "}}>Or</h3>
+                 <div>
+                 <Link href="/login"><button><PrimaryButton text="Login" /></button></Link>
+                 </div>
+                 </div>
 
                 <div className="checkbox_container">
                   {/* <div className="checkbox">
