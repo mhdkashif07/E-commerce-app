@@ -950,9 +950,11 @@ box-shadow: 15px 10px 30px -8px rgba(0,0,0,0.30);
   }
   
   @media screen and (max-width:800px){
-    .app{
-        flex-direction: column;
-        overflow: hidden;
+    .nav_logo {
+        padding-left: 40px;
+    }
+    .nav_icons ul {
+        padding-right: 40px;
     }
 }
 

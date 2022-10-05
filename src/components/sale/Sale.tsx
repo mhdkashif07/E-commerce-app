@@ -45,7 +45,7 @@ const Sale = () => {
                 //data-scroll data-scroll-direction="vertical" data-scroll-speed="2" 
                 //data-aos="fade-up-right" data-aos-delay="30" 
                 >
-                    <Grid container spacing={3}>
+                    <Grid container spacing={3} justifyContent="center">
                         <Grid item xs={12} sm={10} md={6} lg={6}  data-aos="fade-up-right" data-aos-delay="300" >
                             <div className="sale_product_container">
                                 <div className="product_img"><img src={sale1.src}/></div>

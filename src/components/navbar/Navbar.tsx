@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { GiHamburgerMenu, GiTireIronCross } from "react-icons/gi"
 
 
@@ -14,14 +14,9 @@ import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { getTotals } from "../../app/slices/cartSlice";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
+import { AuthContext } from "../../context/auth-context";
 // import { MenuButton } from "../buttons/MenuButton";
 
-const links = [
-  { name: "Home", to: "#", id: 1 },
-  { name: "About", to: "#", id: 2 },
-  { name: "Blog", to: "#", id: 3 },
-  { name: "Contact", to: "#", id: 4 }
-];
 
 const itemVariants = {
   closed: {
@@ -48,13 +43,11 @@ const sideVariants = {
 };
 
 
-
-
-
 const Navbar = () => {
   const { cartTotalQuantity } = useAppSelector((state) => state.cart)
   const [open, cycleOpen] = useCycle(false, true);
-  console.log(open);
+  const useAuth = useContext(AuthContext)
+  
 
   const router = useRouter()
   const dispatch = useAppDispatch()
@@ -93,7 +86,6 @@ const Navbar = () => {
       setPadding(paddingVar);
       setBoxShadow(boxShadowVar);
       setScroll(true)
-      console.log(backgroundTransparacy);
 
     }
   }, [clientWindowHeight]);
@@ -191,7 +183,9 @@ const Navbar = () => {
                     <li>
                       <Link href="/"><a href=""><SearchOutlined /></a></Link>
                     </li>
-                    <li className="cart__logo"><Link href="/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></li>
+                   { useAuth.isUserAuthenticated() ? (
+                     <li className="cart__logo"><Link href="/dashboard/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></li>
+                   ): "" }
                     <li><Link href="/login"><a href=""><BsFillPersonFill /></a></Link></li>
                   </ul>
                 </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { getFromLocalStorage, getFromSessionStorage } from "../utils/utils";
 
 
 type Props = {
@@ -67,9 +68,11 @@ export const AuthProvider = ({ children }: Props) => {
 //   }
 //  };
 
+
+//in nextjs app the localStorage and sessionStorage is not available on server side that's why we use the custom hook
  const isUserAuthenticated = () => {
-    if (localStorage.getItem("isAuthenticated") && sessionStorage.getItem("siteJWT")) {
-        console.log(localStorage.getItem("isAuthenticated"),sessionStorage.getItem("sitJWT") );
+    if (getFromLocalStorage("isAuthenticated") && getFromSessionStorage("siteJWT")) {
+        // console.log(localStorage.getItem("isAuthenticated"),sessionStorage.getItem("sitJWT") );
       return true;
     }
     else{
