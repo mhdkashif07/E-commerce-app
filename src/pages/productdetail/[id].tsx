@@ -87,20 +87,20 @@ const ProductDetail: FC<ProductProps> = ({productDetails}) => {
 };
 
 
-export const getServerSideProps = ({params}: {params: { id: number }}) => {
-  console.log("this is the id", params.id);
+// export const getServerSideProps = ({params}: {params: { id: number }}) => {
+//   console.log("this is the id", params.id);
 
-  const newData = data.mens.filter((item) => {
-    item.id === 3
-  })
+//   const newData = data.mens.filter((item) => {
+//     item.id === 3
+//   })
   
   
-  return {
-    props:{
-      productDetails: data?.mens
-    }
-  }
-}
+//   return {
+//     props:{
+//       productDetails: data?.mens
+//     }
+//   }
+// }
 
 
 // export const getStaticPaths = async () => {
