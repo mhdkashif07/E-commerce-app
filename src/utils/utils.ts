@@ -1,3 +1,6 @@
+import { AuthContext } from './../context/auth-context';
+import { useContext } from 'react';
+
 export const getFromLocalStorage = (key: string) => {
     if (!key || typeof window === 'undefined') {
         return ""
@@ -11,3 +14,9 @@ export const getFromSessionStorage = (key: string) => {
     }
     return sessionStorage.getItem(key)
   }
+
+  export const useAuth = () => {
+    const auth = useContext(AuthContext)
+    return auth
+  }
+

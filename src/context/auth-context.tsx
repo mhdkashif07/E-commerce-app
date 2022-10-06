@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import { getFromLocalStorage, getFromSessionStorage } from "../utils/utils";
 
@@ -46,6 +46,8 @@ export const AuthProvider = ({ children }: Props) => {
     token: data
    });
  };
+
+ 
 
 
  // checks if the user is authenticated or not
