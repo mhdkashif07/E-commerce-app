@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import React, { FC, useEffect } from "react";
 import { useAppDispatch } from "../../app/hook";
@@ -87,7 +87,7 @@ const ProductDetail: FC<ProductProps> = ({productDetails}) => {
 };
 
 
-export const getServerSideProps = async() => {
+export const getStaticProps: GetStaticProps = async({params}) => {
   return {
     props:{
       productDetails: data?.mens
@@ -96,13 +96,13 @@ export const getServerSideProps = async() => {
 }
 
 
-// export const getStaticPaths = async () => {
-//   return {
-//     paths: data.mens.map((item) => {
-//       return {params : { id: String(item.id) }}
-//     }),
-//     fallback: false,
-//   }
-// }
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: data.mens.map((item) => {
+      return {params : { id: String(item.id) }}
+    }),
+    fallback: false,
+  }
+}
 
 export default ProductDetail;

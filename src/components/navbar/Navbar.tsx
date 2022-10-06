@@ -47,6 +47,8 @@ const Navbar = () => {
   const { cartTotalQuantity } = useAppSelector((state) => state.cart)
   const [open, cycleOpen] = useCycle(false, true);
   const useAuth = useContext(AuthContext)
+  console.log(useAuth.isUserAuthenticated());
+  
   
 
   const router = useRouter()
