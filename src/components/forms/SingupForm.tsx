@@ -1,14 +1,6 @@
-import React, { ReactEventHandler, ReactHTMLElement, useContext, MouseEvent } from "react";
+import React, { ReactEventHandler, ReactHTMLElement, useContext, MouseEvent, useState } from "react";
 // import { Link } from "react-router-dom";
-import TextField from "@mui/material/TextField";
-import clsx from "clsx";
-import IconButton from "@mui/material/IconButton";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 import Checkbox from "@mui/material/Checkbox";
 // import { Header } from "./Header";
 import {  makeStyles, createStyles } from '@mui/styles';
@@ -22,68 +14,25 @@ import { auth } from '../../utils/init-firebase'
 import {
   createUserWithEmailAndPassword
 } from 'firebase/auth'
+import { useAuth } from "../../utils/utils";
 
-
-const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
-  root: {
-    "& .MuiInputBase-root": {
-      border_radius: "-1px",
-      padding: "0px 65px",
-      borderRadius: "50px",
-      marginBottom: "15px",
-    },
-  },
-
-  root_password: {
-    "& .MuiInputBase-root": {
-      border_radius: "-1px",
-      padding: "0px 50px",
-      borderRadius: "50px",
-    },
-  },
-
-  MuiOutlinedInput_input: {
-    padding: "18.5px 60px",
-  },
-  MuiOutlinedInput_root: {
-    border_radius: "-1px",
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-  withoutLabel: {
-    marginTop: theme.spacing(3),
-  },
-}));
 
 
 const SingupForm = () => {
+  const [email, setEmail] = useState<string | null>('')
+  const [password, setPassword] = useState<string | null>('')
+  
+
   //get auth context
-  const authContext = useContext(AuthContext);
+  const { signup } = useAuth()
 
   const router = useRouter()
 
-  const classes = useStyles();
-  const [values, setValues] = React.useState({
-    amount: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false,
-  });
-
+ 
   // const [checked, setChecked] = React.useState(true);
   // const handleChange = (event) => {
   //     setChecked(event.target.checked);
   // };
-
-  const handleChange = (prop: string) => (event: SelectChangeEvent<{ value: string[] | unknown }>) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
 
   const handleMouseDownPassword = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
@@ -92,18 +41,14 @@ const SingupForm = () => {
   //handle sign up
   const handleSignup = async(e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    console.log("sign up");
-    //router.push("/login")
     try {
-        const response = await createUserWithEmailAndPassword(auth, "hello@gmail.com", "12345678");
-        console.log(response.user);
+        const response = await signup(email, password);
         if(response.user != null){
             router.push("/login")
         }
         
     } catch (error) {
-        console.log(error);
-        
+        console.log(error); 
     }
   }
 
@@ -126,44 +71,14 @@ const SingupForm = () => {
             </div>
             <div>
               <form className="login_form">
-                <TextField
-                  id="outlined-basic"
-                  label="Email"
-                  variant="outlined"
-                  className={classes.root}
-                />
-                <FormControl
-                  className={classes.root_password}
-                  variant="outlined"
-                >
-                  <InputLabel htmlFor="outlined-adornment-password">
-                    Password
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-password"
-                    type={values.showPassword ? "text" : "password"}
-                    value={values.password}
-                    onChange={() => handleChange("password")}
-                    // fullWidth={true}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {values.showPassword ? (
-                            <Visibility />
-                          ) : (
-                            <VisibilityOff />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                   
-                  />
-                </FormControl>
+              <div className="form__container">
+               <div className="input__field">
+                  <input type="email" placeholder="Email"  onChange={(e) => setEmail(e.target.value)} required  />
+                </div>
+                <div className="input__field">
+                  <input type="text" placeholder="Password"  onChange={(e) => setPassword(e.target.value)} required  />
+                </div>
+               </div>
 
                 <div style={{ marginTop: "15px", display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <div>

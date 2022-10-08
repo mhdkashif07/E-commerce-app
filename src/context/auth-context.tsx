@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import { getFromLocalStorage, getFromSessionStorage } from "../utils/utils";
+import { auth } from "../utils/init-firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 
 type Props = {
     children: React.ReactNode
@@ -29,7 +32,7 @@ type defaultValues = {
 
 
  
-export const AuthContext = React.createContext<defaultValues>(values as defaultValues);
+export const AuthContext = React.createContext<any>({});
 
 //const { Provider } = AuthContext;
 
@@ -47,7 +50,15 @@ export const AuthProvider = ({ children }: Props) => {
    });
  };
 
- 
+ function login(email: string, password: string) {
+  return signInWithEmailAndPassword(auth, email, password)
+}
+
+const signup = (email: string, password: string) => {
+  return createUserWithEmailAndPassword(auth, email, password)
+}
+
+
 
 
  // checks if the user is authenticated or not
@@ -79,7 +90,9 @@ export const AuthProvider = ({ children }: Props) => {
      value={{
       authState,
       setAuthState: (userAuthInfo: any) => setUserAuthInfo(userAuthInfo),
-      isUserAuthenticated
+      isUserAuthenticated, 
+      login,
+      signup
     }}
    >
     {children}

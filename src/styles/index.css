@@ -570,10 +570,6 @@ ul{
 }
 
 /*******  login styles  ******/
-.login_container{
-    /* background-color: aqua; */
-    margin: auto;
-}
 
 .login_using_container{
     display: flex;
@@ -583,26 +579,9 @@ ul{
     margin: 0 10px;
 }
 
-.center_form{
-    width: fit-content;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /* background-color: blue; */
-}
-
-.login_form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
 .checkbox_container{
-    /* background-color: cadetblue; */
-    width: 100%;
+    width: 30%;
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
@@ -614,6 +593,32 @@ ul{
     display: flex;
     align-items: center;
 }
+
+.login_form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form__container{
+    margin: 15px 0;
+    min-width: 450px;
+
+  }
+  .input__field{
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .input__field input{
+    width: -webkit-fill-available;
+    padding: 5px 25px;
+    border-radius: 30px;
+    border: 1px solid gray;
+    font-size: 1.2rem;
+    height: 35px;
+  }
 
 
 
@@ -876,9 +881,10 @@ aside {
     border: none;
     border-radius: 50px;
     color: #ffff;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     letter-spacing: 2px;
     cursor: pointer;
+    height: 35px;
   }
 
   /* dashboard layout styles */
@@ -927,6 +933,11 @@ box-shadow: 15px 10px 30px -8px rgba(0,0,0,0.30);
   .layout .main__section{
     padding-top: 10px;
   }
+
+
+
+
+  
 
 
 /* Media Queries */
