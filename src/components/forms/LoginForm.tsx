@@ -1,4 +1,4 @@
-import React, { MouseEvent, useContext, useState } from "react";
+import React, { MouseEvent, useContext, useState, FormEvent } from "react";
 import Checkbox from "@mui/material/Checkbox";
 // import { Header } from "./Header";
 import {  makeStyles, createStyles } from '@mui/styles';
@@ -11,6 +11,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../utils/init-firebase";
 import { useAppDispatch } from "../../app/hook";
 import { useAuth } from "../../utils/utils";
+import { isError, isSuccess } from "../../app/slices/loadingSlice";
 
 
 
@@ -30,7 +31,7 @@ const LoginForm = () => {
   // };
 
   //handle login
-  const handleLogin = async(e: MouseEvent<HTMLButtonElement>) => {
+  const handleLogin = async(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     //login with firebase
@@ -40,12 +41,13 @@ const LoginForm = () => {
       if(response.user != null){
           sessionStorage.setItem("accessToken", user.accessToken )
           localStorage.setItem("isAuthenticated", JSON.stringify(true))
-          // dispatch(isSuccess)
+          dispatch(isSuccess("Successfully Login"))
           router.push("/dashboard")
       }
       
-  } catch (error) {
-      console.log(error);  
+  } catch (error: any) {
+      console.log(error); 
+      dispatch(isError(error.code)) 
   }
     
   }
@@ -65,7 +67,7 @@ const LoginForm = () => {
               </p> */}
             </div>
             <div>
-              <form className="login_form">
+              <form onSubmit={handleLogin} className="login_form">
                <div className="form__container">
                <div className="input__field">
                   <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required   />
@@ -77,7 +79,7 @@ const LoginForm = () => {
 
                 <div style={{ margin: "5px 0 0 0", display: "flex", flexDirection: "column", alignItems: "center" }}>
                  <div>
-                 <button onClick={(e) => handleLogin(e)} ><PrimaryButton text="Login" /></button>
+                 <button><PrimaryButton text="Login" /></button>
                  </div>
                 <h3 style={{ margin: "2px 0 "}}>Or</h3>
                 <div>

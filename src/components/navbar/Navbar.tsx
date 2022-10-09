@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, MouseEvent } from "react";
 import { GiHamburgerMenu, GiTireIronCross } from "react-icons/gi"
 
 
@@ -16,6 +16,7 @@ import { getTotals } from "../../app/slices/cartSlice";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
 import { AuthContext } from "../../context/auth-context";
 // import { MenuButton } from "../buttons/MenuButton";
+import { AiOutlineLogout } from "react-icons/ai"
 
 
 const itemVariants = {
@@ -47,15 +48,20 @@ const Navbar = () => {
   const { cartTotalQuantity } = useAppSelector((state) => state.cart)
   const [open, cycleOpen] = useCycle(false, true);
   const useAuth = useContext(AuthContext)
-  
-  
-
   const router = useRouter()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(getTotals())
   }, [])
+
+  //handle logout
+  const handleLogout = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    localStorage.removeItem("isAuthenticated")
+    sessionStorage.removeItem("accessToken")
+    router.push("/")
+  }
 
 
 
@@ -188,7 +194,10 @@ const Navbar = () => {
                    { useAuth.isUserAuthenticated() ? (
                      <li className="cart__logo"><Link href="/dashboard/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></li>
                    ): "" }
-                    <li><Link href="/login"><a href=""><BsFillPersonFill /></a></Link></li>
+                      { !useAuth.isUserAuthenticated() ? (
+                         <li><Link href="/login"><a href=""><BsFillPersonFill /></a></Link></li>
+                      ): <li><button onClick={(e) => handleLogout(e)} ><a href=""><AiOutlineLogout /></a></button></li>}
+                   
                   </ul>
                 </div>
               </div>
