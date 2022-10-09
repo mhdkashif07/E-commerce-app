@@ -1,17 +1,18 @@
 import React, { MouseEvent, useContext, useState, FormEvent } from "react";
 import Checkbox from "@mui/material/Checkbox";
 // import { Header } from "./Header";
-import {  makeStyles, createStyles } from '@mui/styles';
+import { makeStyles, createStyles } from '@mui/styles';
 import Link from "next/link";
 import { SelectChangeEvent } from "@mui/material";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { AuthContext } from "../../context/auth-context";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../utils/init-firebase";
+import { auth, db, firestoreDb } from "../../utils/init-firebase";
 import { useAppDispatch } from "../../app/hook";
 import { useAuth } from "../../utils/utils";
 import { isError, isSuccess } from "../../app/slices/loadingSlice";
+import { doc, setDoc } from "firebase/firestore";
 
 
 
@@ -19,8 +20,8 @@ const LoginForm = () => {
   const [email, setEmail] = useState<string | null>(null)
   const [password, setPassword] = useState<string | null>(null)
   //get auth context
- const { login } = useAuth()
- 
+  const { login } = useAuth()
+
 
   const dispatch = useAppDispatch()
   const router = useRouter()
@@ -31,25 +32,27 @@ const LoginForm = () => {
   // };
 
   //handle login
-  const handleLogin = async(e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     //login with firebase
     try {
       const response = await login(email, password)
-      const user: any = response.user 
-      if(response.user != null){
-          sessionStorage.setItem("accessToken", user.accessToken )
-          localStorage.setItem("isAuthenticated", JSON.stringify(true))
-          dispatch(isSuccess("Successfully Login"))
-          router.push("/dashboard")
+      const user: any = response.user
+      console.log(user);
+
+      if (response.user != null) {
+        sessionStorage.setItem("accessToken", user.accessToken)
+        localStorage.setItem("isAuthenticated", JSON.stringify(true))
+        dispatch(isSuccess("Successfully Login"))
+        router.push("/dashboard")
       }
-      
-  } catch (error: any) {
-      console.log(error); 
-      dispatch(isError(error.code)) 
-  }
-    
+
+    } catch (error: any) {
+      console.log(error);
+      dispatch(isError(error.code))
+    }
+
   }
 
 
@@ -68,23 +71,23 @@ const LoginForm = () => {
             </div>
             <div>
               <form onSubmit={handleLogin} className="login_form">
-               <div className="form__container">
-               <div className="input__field">
-                  <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required   />
+                <div className="form__container">
+                  <div className="input__field">
+                    <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
+                  </div>
+                  <div className="input__field">
+                    <input type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
+                  </div>
                 </div>
-                <div className="input__field">
-                  <input type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required  />
-                </div>
-               </div>
 
                 <div style={{ margin: "5px 0 0 0", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                 <div>
-                 <button><PrimaryButton text="Login" /></button>
-                 </div>
-                <h3 style={{ margin: "2px 0 "}}>Or</h3>
-                <div>
-                <Link href="/signup"><button><PrimaryButton text="Sing Up" /></button></Link>
-                </div>
+                  <div>
+                    <button><PrimaryButton text="Login" /></button>
+                  </div>
+                  <h3 style={{ margin: "2px 0 " }}>Or</h3>
+                  <div>
+                    <Link href="/signup"><button><PrimaryButton text="Sing Up" /></button></Link>
+                  </div>
                 </div>
 
                 <div className="checkbox_container">

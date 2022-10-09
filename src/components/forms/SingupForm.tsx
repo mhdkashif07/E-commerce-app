@@ -3,32 +3,38 @@ import React, { ReactEventHandler, ReactHTMLElement, useContext, MouseEvent, use
 
 import Checkbox from "@mui/material/Checkbox";
 // import { Header } from "./Header";
-import {  makeStyles, createStyles } from '@mui/styles';
+import { makeStyles, createStyles } from '@mui/styles';
 import Link from "next/link";
 import { SelectChangeEvent } from "@mui/material";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { AuthContext } from "../../context/auth-context";
 import { useRouter } from "next/router";
 
-import { auth } from '../../utils/init-firebase'
+import { auth, firestoreDb } from '../../utils/init-firebase'
 import {
   createUserWithEmailAndPassword
 } from 'firebase/auth'
 import { useAuth } from "../../utils/utils";
+import { doc, setDoc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../app/hook";
+import { isError, isLoading, isSuccess } from "../../app/slices/loadingSlice";
 
 
 
 const SingupForm = () => {
+  const [userName, setUserName] = useState<string | null>('')
   const [email, setEmail] = useState<string | null>('')
   const [password, setPassword] = useState<string | null>('')
-  
+  const [country, setCountry] = useState<string | null>('')
+  const dispatch = useAppDispatch()
 
   //get auth context
   const { signup } = useAuth()
 
   const router = useRouter()
 
- 
+
   // const [checked, setChecked] = React.useState(true);
   // const handleChange = (event) => {
   //     setChecked(event.target.checked);
@@ -39,16 +45,32 @@ const SingupForm = () => {
   };
 
   //handle sign up
-  const handleSignup = async(e: MouseEvent<HTMLButtonElement>) => {
+  const handleSignup = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
+    dispatch(isLoading())
     try {
-        const response = await signup(email, password);
-        if(response.user != null){
-            router.push("/login")
+      const response = await signup(email, password);
+      const user = response.user
+      if (response.user != null) {
+        try {
+          // Add a new document in collection "profiles"
+          await setDoc(doc(firestoreDb, "profiles", user.uid), {
+            userEmail: user.email,
+            emailVerified: user.emailVerified,
+            userName: userName,
+            userCountry: country
+          }).then(() =>
+            dispatch(isSuccess("Account Created Successfully")))
+
+        } catch (error: any) {
+          console.log(error);
+          dispatch(isError(error.code))
         }
-        
-    } catch (error) {
-        console.log(error); 
+        router.push("/login")
+      }
+
+    } catch (error:any) {
+      console.log(error.code);
     }
   }
 
@@ -71,24 +93,31 @@ const SingupForm = () => {
             </div>
             <div>
               <form className="login_form">
-              <div className="form__container">
-               <div className="input__field">
-                  <input type="email" placeholder="Email"  onChange={(e) => setEmail(e.target.value)} required  />
+                <div className="form__container">
+                  <div className="input__field">
+                    <input type="text" placeholder="UserName" onChange={(e) => setUserName(e.target.value)} required />
+                  </div>
+                  <div className="input__field">
+                    <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
+                  </div>
+                  <div className="input__field">
+                    <input type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
+                  </div>
+                  <div className="input__field">
+                    <input type="text" placeholder="Country" onChange={(e) => setCountry(e.target.value)} required />
+                  </div>
+
                 </div>
-                <div className="input__field">
-                  <input type="text" placeholder="Password"  onChange={(e) => setPassword(e.target.value)} required  />
-                </div>
-               </div>
 
                 <div style={{ marginTop: "15px", display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <div>
-                  <button onClick={(e) => handleSignup(e)} ><PrimaryButton text="Sign Up" /></button>
+                    <button onClick={(e) => handleSignup(e)} ><PrimaryButton text="Sign Up" /></button>
                   </div>
-                 <h3 style={{ margin: "7px 0 "}}>Or</h3>
-                 <div>
-                 <Link href="/login"><button><PrimaryButton text="Login" /></button></Link>
-                 </div>
-                 </div>
+                  <h3 style={{ margin: "7px 0 " }}>Or</h3>
+                  <div>
+                    <Link href="/login"><button><PrimaryButton text="Login" /></button></Link>
+                  </div>
+                </div>
 
                 <div className="checkbox_container">
                   {/* <div className="checkbox">
