@@ -13,7 +13,7 @@ const ChooseUs = () => {
       <div className="choose_us_container">
         <PrimaryTitle text="Why should you choose us?" />
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={4} md={3} lg={3} data-aos="flip-up" data-aos-offset="100">
+          <Grid item xs={12} sm={4} md={3} lg={3} data-aos="fade-up" data-aos-offset="250" data-aos-delay="150">
             <div className="choose_us_item">
               <div className="choose_img">
                 <img src={choose1.src} />
@@ -32,7 +32,7 @@ const ChooseUs = () => {
             </div>
           </Grid>
 
-          <Grid item xs={12} sm={4} md={3} lg={3} data-aos="flip-up" data-aos-offset="100">
+          <Grid item xs={12} sm={4} md={3} lg={3} data-aos="fade-up" data-aos-offset="250" data-aos-delay="200">
             <div className="choose_us_item">
               <div className="choose_img">
                 <img src={choose2.src} />
@@ -51,7 +51,7 @@ const ChooseUs = () => {
             </div>
           </Grid>
 
-          <Grid item xs={12} sm={4} md={3} lg={3} data-aos="flip-up" data-aos-offset="100">
+          <Grid item xs={12} sm={4} md={3} lg={3} data-aos="fade-up" data-aos-offset="250" data-aos-delay="250">
             <div className="choose_us_item">
               <div className="choose_img">
                 <img src={choose3.src} />
@@ -70,7 +70,7 @@ const ChooseUs = () => {
             </div>
           </Grid>
 
-          <Grid item xs={12} sm={4} md={3} lg={3} data-aos="flip-up" data-aos-offset="100">
+          <Grid item xs={12} sm={4} md={3} lg={3} data-aos="fade-up" data-aos-offset="250" data-aos-delay="300">
             <div className="choose_us_item"> 
               <div className="choose_img">
                 <img src={choose4.src} />

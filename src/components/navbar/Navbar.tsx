@@ -118,7 +118,7 @@ const Navbar = () => {
               <Link href="/"><a href=""><span className="logo__name"> <span className="e">E</span>-Shop</span></a></Link>
             </div>
           </Grid>
-          <Grid item xs={1} sm={1} md={4} lg={4} xl={4}>
+          <Grid item xs={3} sm={3} md={6} lg={4} xl={4}>
             <div className="nav_options">
               <div>
                 <ul>

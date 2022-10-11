@@ -15,7 +15,7 @@ interface Props {
 const Product: FC<Props> = ({item}) => {
     
     return (
-        <div>
+        <div >
             <a href="">
             <Link href={`/productdetail/${item.id}`} >
             <div className="selected_product_item" key="2">

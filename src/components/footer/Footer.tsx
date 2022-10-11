@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { Grid } from '@mui/material'
 import React, { FC } from 'react'
 import logo1 from '../../../public/002-facebook-logo.png'
+import { FaLinkedin, FaFacebook, FaGithub, FaDiscord, FaYoutube } from "react-icons/fa"
 
 
 const Footer: FC = () => {
@@ -19,15 +21,15 @@ const Footer: FC = () => {
                 </p>
               </div>
               <div className="social_icons_container">
-                  <div className="icons">
-                      <ul>
-                          <li><a href=" "><img src={logo1.src} alt="" /></a></li>
-                          <li><a href=" "><img src={logo1.src} alt="" /></a></li>
-                          <li><a href=" "><img src={logo1.src} alt="" /></a></li>
-                          <li><a href=" "><img src={logo1.src} alt="" /></a></li>
-                          <li><a href=" "><img src={logo1.src} alt="" /></a></li>
-                      </ul>
-                  </div>
+                <div className="icons">
+                  <ul>
+                    <li><a href="https://www.linkedin.com/in/mhdkashif07/" target="_blank"><FaLinkedin size={35} /></a></li>
+                    <li><a href="https://www.facebook.com/mhdkashif07" target="_blank"><FaFacebook size={35} /></a></li>
+                    <li><a href="https://github.com/mhdkashif07" target="_blank"><FaGithub size={35} /></a></li>
+                    <li><a href=" https://discord.com/users/736952462245888071" target="_blank"><FaDiscord size={35} /></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCZOsZHCD3ffoKBHptvBcy2g" target="_blank" ><FaYoutube size={35} /></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </Grid>
@@ -61,14 +63,14 @@ const Footer: FC = () => {
               </div>
             </div>
           </Grid>
-          
+
           <Grid item xs={10} sm={10} md={2} lg={2} className="right_side_footer">
             <div>
               <div className="right_side_title"><p>Contact</p></div>
               <div className="right_side_options">
                 <ul>
-                  <li><a href="">mhdkashif07@gmail.com</a></li>
-                  <li><a href="">Hotline: +1 131 138 138</a></li>
+                  <li><a href="mailto:mhdkashif07@gmail.com">mhdkashif07@gmail.com</a></li>
+                  {/* <li><a href="">Hotline: +1 131 138 138</a></li> */}
                 </ul>
               </div>
             </div>
@@ -76,14 +78,14 @@ const Footer: FC = () => {
 
         </Grid>
 
-        
+
       </div>
 
       <div className="copy_right_container">
-          <div className="copy_text">
-            DEVELOPE BY M.KASHIF - © 2021. ALL RIGHTS RESERVED.
-          </div>
+        <div className="copy_text">
+          DEVELOPE BY M.KASHIF - © 2022. ALL RIGHTS RESERVED.
         </div>
+      </div>
     </div>
   )
 }

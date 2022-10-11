@@ -74,10 +74,10 @@ const SelectedProducts: FC<selectedProps> = ({selected}) => {
                    >
                    <Grid container spacing={3} 
                     data-aos="fade-up"
-                    data-aos-offset="100"
+                    data-aos-offset="250"
                    >
                         {selected.map((item)=>(
-                            <Grid item xs={12} sm={4} md={3} lg={3} key={item.id} >
+                            <Grid item xs={12} sm={6} md={3} lg={3} key={item.id} >
                            <Product item={item} />
                             </Grid>
                          ))} 
