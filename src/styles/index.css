@@ -551,6 +551,7 @@ ul{
 .icons ul{
     display: flex;
     margin-top: 40px;
+    justify-content: space-between;
 }
 
 .icons ul li{
@@ -845,7 +846,7 @@ ul{
     cursor: pointer;
     margin: 1.25rem;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.3rem;
     top: 0;
     right: 0;
     background: transparent;
@@ -985,10 +986,36 @@ box-shadow: 15px 10px 30px -8px rgba(0,0,0,0.30);
     .nav_icons ul {
         padding-right: 40px;
     }
+
+    .choose_us_item div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .choose_us_item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .choose_us_item .item_discription{
+        text-align: center;
+    }
+    .copy_text{
+        padding: 0 30px;
+        text-align: center;
+    }
 }
 
   @media screen and (max-width: 500px){
-  
+    /* .first_item{
+        padding: 0 10px;
+    }  */
+    .icons ul li {
+        padding: 0 5px;
+    }
     .nav_options{
         display: none;
     }

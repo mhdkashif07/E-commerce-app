@@ -11,7 +11,9 @@ const ChooseUs = () => {
   return (
     <div className="container">
       <div className="choose_us_container">
-        <PrimaryTitle text="Why should you choose us?" />
+      <div>
+      <PrimaryTitle text="Why should you choose us?" />
+      </div>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4} md={3} lg={3} data-aos="fade-up" data-aos-offset="250" data-aos-delay="150">
             <div className="choose_us_item">
