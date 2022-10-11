@@ -14,7 +14,7 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_REACT_APP_APP_ID,
 }
 
-console.log(firebaseConfig);
+
 
 
 // if (!firebase.length) {
