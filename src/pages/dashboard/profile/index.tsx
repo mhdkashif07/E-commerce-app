@@ -2,6 +2,7 @@ import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import React, { ReactElement, useEffect, useState } from 'react'
 import Layout from '..'
 import { firestoreDb } from '../../../utils/init-firebase';
+import { getFromSessionStorage } from '../../../utils/utils';
 
 interface Profile {
   emailVerified: boolean;
@@ -15,12 +16,16 @@ const Profile = () => {
   console.log(profileData);
   
 
- 
-
+  
   useEffect(() => {
+    const userId = getFromSessionStorage("userUID") as string
+  
+// setUserId(userUid)
+    
+    
     const fetchData = async () => {
       //get specific doc of user profile
-      const docRef = doc(firestoreDb, "profiles", "EYwtoQWlA8cachMaq7ktfkbGFI22");
+      const docRef = doc(firestoreDb, "profiles", userId);
       const docSnap = await getDoc(docRef);
       //const data = docSnap.data()
       setProfileData(docSnap.data() as Profile)

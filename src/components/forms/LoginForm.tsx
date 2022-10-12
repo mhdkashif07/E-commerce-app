@@ -45,6 +45,7 @@ const LoginForm = () => {
         sessionStorage.setItem("accessToken", user.accessToken)
         localStorage.setItem("isAuthenticated", JSON.stringify(true))
         dispatch(isSuccess("Successfully Login"))
+        sessionStorage.setItem("userUID", response.user.uid)
         router.push("/dashboard")
       }
 
@@ -86,7 +87,7 @@ const LoginForm = () => {
                   </div>
                   <h3 style={{ margin: "2px 0 " }}>Or</h3>
                   <div>
-                    <Link href="/signup"><button><PrimaryButton text="Sing Up" /></button></Link>
+                    <Link href="/signup"><button><PrimaryButton text="Sign Up" /></button></Link>
                   </div>
                 </div>
 
