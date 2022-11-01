@@ -10,8 +10,11 @@ yarn
 ```
 
 Second, then for using firebase you need to have the firebase keys:
+
 1: create firebase project with auth and cloud firestore.
+
 2: create the file .env.local into root directory.
+
 2: get the keys from config and paste it into .env.local.
 
 Third, run the development server:
