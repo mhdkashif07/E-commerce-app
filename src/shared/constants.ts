@@ -1,7 +1,3 @@
-import select1 from '../components/images/AdobeStock_236655481.png'
-import select2 from '../components/images/AdobeStock_118120200.png'
-import select3 from '../components/images/AdobeStock_136908398.png'
-import select4 from '../components/images/AdobeStock_173519034.png'
 
 export const data =  {
     mens: [

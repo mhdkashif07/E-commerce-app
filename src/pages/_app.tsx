@@ -58,10 +58,6 @@ function MyApp(props: AppPropsWithLayout) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
-          rel="stylesheet" />
-
         <title>{"E-Commerse Website"}</title>
       </Head>
       <ThemeProvider theme={theme}>
