@@ -1,8 +1,23 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+First, run the install all the dependencies:
 
-First, run the development server:
+```bash
+npm install
+# or
+yarn
+```
+
+Second, then for using firebase you need to have the firebase keys:
+
+1: create firebase project with auth and cloud firestore.
+
+2: create the file .env.local into root directory.
+
+2: get the keys from config and paste it into .env.local.
+
+Third, run the development server:
 
 ```bash
 npm run dev
