@@ -4,7 +4,7 @@ import { Grid } from "@mui/material";
 import { removeFromCart, clearCart, decreaseCart, addToCart, getTotals } from "../../../app/slices/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hook";
 import Link from "next/link";
-import Layout from "..";
+import Layout, { NestedLayout } from "..";
 
 
 const Cart = () => {
@@ -186,7 +186,7 @@ const Cart = () => {
 };
 
 Cart.getLayout = function getLayout(page: ReactElement){
-  return  <Layout>{page}</Layout>
+  return  <NestedLayout>{page}</NestedLayout>
 }
 
 

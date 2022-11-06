@@ -7,10 +7,11 @@ import arrow  from "../../public/noun_Arrow Left_2682937.png"
 import { Grid } from "@mui/material"
 import { ChooseUs, Feature, Sale, SelectedProducts, Title, TodayProducts } from '../components'
 import { data } from '../shared/constants'
-import { allDataTypes } from '../shared/types'
+import { allDataTypes, GetLayout } from '../shared/types'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
-import { useContext, useEffect, useRef } from 'react'
+import { ReactElement, useContext, useEffect, useRef } from 'react'
 import { AuthContext } from '../context/auth-context'
+import PrimaryLayout from '../components/layout/PrimaryLayout'
 // import  AOS  from "aos"
 
 
@@ -18,7 +19,7 @@ interface HomeProps{
   data: allDataTypes
 }
 
-const Home: NextPage<HomeProps> = ({data}) => {
+const Home: NextPage<HomeProps> & GetLayout = ({data}) => {
   const useAuth = useContext(AuthContext)
   console.log(useAuth.authState);
   
@@ -65,6 +66,10 @@ const Home: NextPage<HomeProps> = ({data}) => {
       <TodayProducts newProducts={data.mens} />
     </div>
   )
+}
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <PrimaryLayout>{page}</PrimaryLayout>
 }
 
 export const getStaticProps = async() => {

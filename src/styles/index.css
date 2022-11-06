@@ -906,12 +906,12 @@ aside {
     height: 100vh;
     width: 270px;
     position: fixed;
-box-shadow: 15px 10px 30px -8px rgba(0,0,0,0.30);
+    box-shadow: 15px 10px 20px -8px rgb(0 0 0 / 9%);
   }
 
   .layout__content--main{
     width: 100%;
-    padding-left: 230px;
+    padding-left: 270px;
   }
 
   .dashboard__sidebar ul{

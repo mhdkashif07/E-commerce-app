@@ -77,9 +77,9 @@ function MyApp(props: AppPropsWithLayout) {
             containerRef={containerRef}>
             <main data-scroll-container ref={containerRef}> */}
             <AuthProvider>
-            < Navbar />
+            {/* < Navbar /> */}
               {getLayout(<Component {...pageProps} />)}
-              <Footer />
+              {/* <Footer /> */}
             </AuthProvider>
             {/* </main>
           </LocomotiveScrollProvider> */}
