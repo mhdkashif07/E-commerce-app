@@ -1,17 +1,16 @@
 import { GetStaticProps } from 'next';
-import React, { FC } from 'react'
-// import { Header } from "../components/Header";
+import React, { FC, ReactElement } from 'react'
 import { Sidebar } from "../../components/index";
+import PrimaryLayout from '../../components/layout/PrimaryLayout';
 import MenClothesList from '../../components/lists/MenClothesList';
 import { data } from '../../shared/constants';
-import { allDataTypes } from '../../shared/types';
-// import { MenClothes } from "../components/MenClothes";
+import { allDataTypes, GetLayout } from '../../shared/types';
 
 interface PageProps{
     data: allDataTypes
   }
 
-const index: FC<PageProps> = ({data}) => {
+const index: FC<PageProps> & GetLayout = ({data}) => {
     
   return (
     <div className='container'>
@@ -27,6 +26,10 @@ const index: FC<PageProps> = ({data}) => {
       </div>
     </div>
   )
+};
+
+index.getLayout = function getLayout(page: ReactElement) {
+  return <PrimaryLayout>{page}</PrimaryLayout>
 }
 
 export const getStaticProps: GetStaticProps = async() => {

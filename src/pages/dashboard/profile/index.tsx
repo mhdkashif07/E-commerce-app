@@ -1,7 +1,7 @@
 import { Skeleton } from '@mui/material';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import React, { ReactElement, useEffect, useState } from 'react'
-import Layout from '..'
+import Layout, { NestedLayout } from '..'
 import { firestoreDb } from '../../../utils/init-firebase';
 import { getFromSessionStorage } from '../../../utils/utils';
 
@@ -71,7 +71,7 @@ const Profile = () => {
 }
 
 Profile.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>
+  return <NestedLayout>{page}</NestedLayout>
 }
 
 

@@ -1,12 +1,13 @@
 import { Grid } from "@mui/material";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import React, { FC, useEffect, useContext } from "react";
+import React, { FC, useEffect, useContext, ReactElement } from "react";
 import { useAppDispatch } from "../../app/hook";
 import { addToCart, getTotals } from "../../app/slices/cartSlice";
+import PrimaryLayout from "../../components/layout/PrimaryLayout";
 import { AuthContext } from "../../context/auth-context";
 import { data } from "../../shared/constants";
-import { allDataTypes } from "../../shared/types";
+import { allDataTypes, GetLayout } from "../../shared/types";
 import { useAuth } from "../../utils/utils";
 // import { useParams } from "react-router-dom";
 // import { Header } from "./Header";
@@ -34,7 +35,7 @@ interface Product {
   description: string;
 }
 
-const ProductDetail: FC<ProductProps> = ({ productDetails }) => {
+const ProductDetail: FC<ProductProps> & GetLayout = ({ productDetails }) => {
   const { query } = useRouter()
   const productId = query.id;
   const dispatch = useAppDispatch()
@@ -95,6 +96,10 @@ const ProductDetail: FC<ProductProps> = ({ productDetails }) => {
     </div>
   );
 };
+
+ProductDetail.getLayout = function getLayout(page: ReactElement) {
+  return <PrimaryLayout>{page}</PrimaryLayout>
+}
 
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
