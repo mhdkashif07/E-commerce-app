@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material'
 import Link from 'next/link'
 import React, { FC } from 'react'
-import { allDataTypes } from '../../shared/types'
+import { allDataTypes, Result } from '../../shared/types'
 import { Title, Product } from '../index'
 
 interface MenProps {
-    menClothes: allDataTypes['mens']
+    menClothes: Result[]
 }
 
 const MenClothesList: FC<MenProps> = ({ menClothes }) => {
@@ -13,8 +13,8 @@ const MenClothesList: FC<MenProps> = ({ menClothes }) => {
         <div>
             <div className="selected_product_container">
                 <Grid container spacing={3}>
-                    {menClothes.map((item) => (
-                        <Grid item xs={12} sm={10} md={4} lg={4} xl={4} key={item.id}>
+                    {menClothes?.map((item) => (
+                        <Grid item xs={12} sm={10} md={4} lg={4} xl={4} key={item.code}>
                             <Product item={item} />
                         </Grid>
                     ))}

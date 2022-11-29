@@ -1,12 +1,12 @@
 import { Grid } from '@mui/material'
 import React, { FC, useEffect } from 'react'
-import { allDataTypes } from '../../shared/types'
+import { allDataTypes, Result } from '../../shared/types'
 import Product from '../cards/Product'
 import PrimaryTitle from '../title/PrimaryTitle'
 import AOS from "aos"
 
 interface todayProps {
-    newProducts: allDataTypes['mens']
+    newProducts: Result[]
 }
 
 const TodayProducts: FC<todayProps> = ({ newProducts }) => {
@@ -16,6 +16,11 @@ const TodayProducts: FC<todayProps> = ({ newProducts }) => {
         });
         AOS.refresh();
       }, []);
+
+
+
+    
+     
     return (
         <div>
             <div className="container">
@@ -24,8 +29,8 @@ const TodayProducts: FC<todayProps> = ({ newProducts }) => {
                  <PrimaryTitle text="Products in today" />
                  </div>
                     <Grid container spacing={3} data-aos="fade-up" data-offset="200">
-                        {newProducts.map((item) => (
-                            <Grid item xs={12} sm={6} md={3} lg={3} key={item.id}>
+                        {newProducts?.slice(6,10)?.map((item) => (
+                            <Grid item xs={12} sm={6} md={3} lg={3} key={item.code}>
                                 <Product item={item} />
                             </Grid>
                         ))}

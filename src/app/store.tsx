@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
 import cartReducer from './slices/cartSlice';
 import loadingReducer from "./slices/loadingSlice";
-
+import productReducer from "./slices/dataSlice"
 
 const store = configureStore({
     reducer: {
         cart: cartReducer,
-        loading: loadingReducer
+        loading: loadingReducer,
+        productData: productReducer
     }
 })
 
