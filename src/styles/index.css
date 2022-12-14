@@ -1,5 +1,13 @@
+/* :root{
+    --main-primary-color: #FBB03B
+} */
+
+
 * Global styles *
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); */
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -360,7 +368,7 @@ ul{
 
 /****** Choose us styles ******/
 .choose_us_container{
-    padding-bottom: 70px;
+    padding-bottom: 0px;
 }
 
 .choose_title{
@@ -686,7 +694,7 @@ ul{
 .cart__btn{
     padding: 5px 30px;
     border-radius: 25px;
-    background-color: darkmagenta;
+    background-color: #FBB03B;
     margin-top: 1rem;
     display: inline-block;
     cursor: pointer;
@@ -881,7 +889,7 @@ aside {
   /* Primary button styles */
 
   .primary__button button{
-    background-color: rgb(48, 48, 148);
+    background-color: #FBB03B;
     padding: 0px 40px;
     /* width: 200px; */
     height: 40px;

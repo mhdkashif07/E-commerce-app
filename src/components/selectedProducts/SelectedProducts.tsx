@@ -1,13 +1,13 @@
 import { Grid } from '@mui/material'
 import Link from 'next/link'
 import React, { FC, useEffect } from 'react'
-import { allDataTypes } from '../../shared/types'
+import { allDataTypes, Result } from '../../shared/types'
 import { Title, Product } from '../index';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 interface selectedProps{
-    selected: allDataTypes['mens']
+    selected: Result[]
 }
 
 
@@ -76,8 +76,8 @@ const SelectedProducts: FC<selectedProps> = ({selected}) => {
                     data-aos="fade-up"
                     data-aos-offset="250"
                    >
-                        {selected.map((item)=>(
-                            <Grid item xs={12} sm={6} md={3} lg={3} key={item.id} >
+                        {selected?.slice(0,4)?.map((item)=>(
+                            <Grid item xs={12} sm={6} md={3} lg={3} key={item.code}>
                            <Product item={item} />
                             </Grid>
                          ))} 
