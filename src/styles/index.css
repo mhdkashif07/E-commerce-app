@@ -1,10 +1,12 @@
-:root{
+/* :root{
     --main-primary-color: #FBB03B
-}
+} */
 
 
 * Global styles *
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); */
+
+
 
 * {
     margin: 0;
@@ -692,7 +694,7 @@ ul{
 .cart__btn{
     padding: 5px 30px;
     border-radius: 25px;
-    background-color: var(--main-primary-color);
+    background-color: #FBB03B;
     margin-top: 1rem;
     display: inline-block;
     cursor: pointer;
@@ -887,7 +889,7 @@ aside {
   /* Primary button styles */
 
   .primary__button button{
-    background-color: var(--main-primary-color);
+    background-color: #FBB03B;
     padding: 0px 40px;
     /* width: 200px; */
     height: 40px;
