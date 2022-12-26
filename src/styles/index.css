@@ -314,7 +314,7 @@ ul{
 .selected_product_container .show_more{
     display: flex;
     justify-content: space-between;
-    padding: 40px 0;
+    padding: 4rem 0;
 }
 
 .selected_product_item{
@@ -693,7 +693,7 @@ ul{
 /**********  cart styles  ***********/
 .cart__btn{
     padding: 5px 30px;
-    border-radius: 25px;
+    border-radius: 7px;
     background-color: #FBB03B;
     margin-top: 1rem;
     display: inline-block;
@@ -841,7 +841,7 @@ ul{
     margin: 50px 0;
 }
 
-/* hamburger styles */
+/** hamburger styles **/
 
 .hamburger{
     text-align: end;
@@ -868,11 +868,12 @@ ul{
  }
 
 aside {
-    background-color: #c4a8ff;
+    background-color: #FBB03B;
     height: 100vh;
     position: fixed;
     /* bottom: 0; */
     top: 0;
+    left: 0;
 
   }
 
@@ -886,7 +887,7 @@ aside {
   }
 
 
-  /* Primary button styles */
+  /** Primary button styles **/
 
   .primary__button button{
     background-color: #FBB03B;
@@ -894,7 +895,7 @@ aside {
     /* width: 200px; */
     height: 40px;
     border: none;
-    border-radius: 50px;
+    border-radius: 7px;
     color: #ffff;
     font-size: 1.1rem;
     letter-spacing: 2px;
@@ -902,7 +903,7 @@ aside {
     height: 35px;
   }
 
-  /* dashboard layout styles */
+  /** dashboard layout styles **/
 
   .layout{
     display: flex;
@@ -1040,6 +1041,55 @@ aside {
         padding: 30px 20px 30px 20px;
     }
     .single__product.container {
+        padding: 0;
+    }
+
+    .sidebar__section{
+        display: none;
+    }
+    .sidebar{
+        margin-right: 0rem;
+    }
+    .men__products {
+        display: block;
+    }
+    .home_container{
+        background-position: top;
+    }
+
+    .show_more .selected_title{
+        font-size: 23px;
+    }
+    .show_more_button a  {
+        font-size: 13px;
+    }
+    .show_more .show_more_button{
+        padding: 2px 7px;
+    }
+    .selected_product_container .show_more{
+        padding: 1rem 0 2rem 0;
+    }
+
+    .choose_title{
+        padding: 1rem 0 2rem 0;
+    }
+    .footer_container{
+        padding: 2rem 0 1rem 0;
+    }
+    .right_side_title {
+        padding-bottom: 1px;
+    }
+    .total__items {
+        background-color: yellow;
+        color: black;
+        padding: 2px 8px 1px 8px;
+        font-size: 10px;
+        border-radius: 50%;
+        position: absolute;
+        top: -8px;
+        left: 27%;
+    }
+    .product__details{
         padding: 0;
     }
   }
