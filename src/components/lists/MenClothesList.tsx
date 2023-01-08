@@ -12,7 +12,11 @@ const MenClothesList: FC<MenProps> = ({ menClothes }) => {
     return (
         <div>
             <div className="selected_product_container">
-                <Grid container spacing={3}>
+                <Grid container spacing={{
+                    xs: 0,
+                    sm: 0,
+                    md: 3
+                }}>
                     {menClothes?.map((item) => (
                         <Grid item xs={12} sm={10} md={4} lg={4} xl={4} key={item.code}>
                             <Product item={item} />

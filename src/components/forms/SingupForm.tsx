@@ -19,7 +19,8 @@ import { doc, setDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { useAppDispatch } from "../../app/hook";
 import { isError, isLoading, isSuccess } from "../../app/slices/loadingSlice";
-
+import { BsFacebook } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 
 
 const SingupForm = () => {
@@ -131,14 +132,15 @@ const SingupForm = () => {
                   </div> */}
                 </div>
 
-                <div className="login_using_container">
+                <div className="login_using_container" style={{marginTop: "1rem"}}>
                   <div className="login_facebook">
-                    <a href="">facebook</a>
+                    <a href=""><BsFacebook size={34} /></a>
                   </div>
                   <div className="login_gmail">
-                    <a href="">gmail</a>
+                    <a href=""><FcGoogle size={34} /> </a>
                   </div>
                 </div>
+
               </form>
             </div>
           </div>

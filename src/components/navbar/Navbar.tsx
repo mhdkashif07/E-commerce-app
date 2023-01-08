@@ -100,12 +100,12 @@ const Navbar = () => {
 
   return (
     <div className="navbar__list">
-      <div 
-      className={router.route != "/" || backgroundTransparacy > 0 ? `navbar_container color-black` : "navbar_container"} style={{
-        background: `rgba(245, 245, 245, ${backgroundTransparacy})`,
-        padding: `${padding} 0px`,
-        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
-      }}
+      <div
+        className={router.route != "/" || backgroundTransparacy > 0 ? `navbar_container color-black` : "navbar_container"} style={{
+          background: `rgba(245, 245, 245, ${backgroundTransparacy})`,
+          padding: `${padding} 0px`,
+          boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+        }}
       >
 
 
@@ -140,7 +140,7 @@ const Navbar = () => {
                     <motion.aside
                       initial={{ translateX: 300 }}
                       animate={{
-                        width: 500,
+                        width: "100%",
                         //x: "-300px"
                         translateX: 0
 
@@ -170,8 +170,12 @@ const Navbar = () => {
                               variants={itemVariants}>
                               <Link href="/"><a href=""><SearchOutlined /></a></Link>
                             </motion.li>
-                            <motion.li whileHover={{ scale: 1.1 }}
-                              variants={itemVariants} className="cart__logo"><Link href="/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></motion.li>
+                            {useAuth.isUserAuthenticated() ? (
+                              <motion.li whileHover={{ scale: 1.1 }}
+                                variants={itemVariants} className="cart__logo"><Link href="/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span>
+                              </motion.li>
+                            ) : ""}
+
                             <motion.li whileHover={{ scale: 1.1 }}
                               variants={itemVariants}><Link href="/login"><a href=""><BsFillPersonFill /></a></Link></motion.li>
                           </ul>
@@ -182,7 +186,7 @@ const Navbar = () => {
                     </motion.aside>
                   )}
                 </AnimatePresence>
-                <button onClick={() => cycleOpen()}>{ open ? <GiTireIronCross size={22} /> : <GiHamburgerMenu size={25} />}</button>
+                <button onClick={() => cycleOpen()}>{open ? <GiTireIronCross size={22} /> : <GiHamburgerMenu size={25} />}</button>
 
               </div>
               <div className="nav_icons">
@@ -191,13 +195,13 @@ const Navbar = () => {
                     <li>
                       <Link href="/"><a href=""><SearchOutlined /></a></Link>
                     </li>
-                   { useAuth.isUserAuthenticated() ? (
-                     <li className="cart__logo"><Link href="/dashboard/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></li>
-                   ): "" }
-                      { !useAuth.isUserAuthenticated() ? (
-                         <li><Link href="/login"><a href=""><BsFillPersonFill /></a></Link></li>
-                      ): <li><button onClick={(e) => handleLogout(e)} ><a href=""><AiOutlineLogout /></a></button></li>}
-                   
+                    {useAuth.isUserAuthenticated() ? (
+                      <li className="cart__logo"><Link href="/dashboard/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></li>
+                    ) : ""}
+                    {!useAuth.isUserAuthenticated() ? (
+                      <li><Link href="/login"><a href=""><BsFillPersonFill /></a></Link></li>
+                    ) : <li><button onClick={(e) => handleLogout(e)} ><a href=""><AiOutlineLogout /></a></button></li>}
+
                   </ul>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Skeleton } from "@mui/material";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import React, { FC, useEffect, useContext, ReactElement, useState } from "react";
@@ -18,11 +18,47 @@ import { useAuth } from "../../utils/utils";
 // import { addToCart, getTotals } from '../app/slice/CartSlice'
 
 
+export const SkeletonCard = () => {
+  return (
+    <div className="single__product container ">
+      <div className="product">
+        <Grid container spacing={3}>
+          <Grid item xs={4} sm={4} md={1} lg={1} xl={1}>
+            <Skeleton variant="text" animation="wave" sx={{ fontSize: '2rem', height: "140px", marginTop: "-2rem" }} />
+          </Grid>
+          <Grid item xs={8} sm={8} md={5} lg={4} xl={4}>
+            <Skeleton variant="text" animation="wave" sx={{ fontSize: '2rem', height: "700px", marginTop: "-9.76rem" }} />
+
+          </Grid>
+          <Grid item xs={12} sm={10} md={6} lg={6} xl={6}>
+            <div className="product__details">
+              {/* <h4 className="product__discount">sale</h4> */}
+              <h1 className="product__name">  <Skeleton variant="text" animation="wave" sx={{ fontSize: '2rem', marginTop: "-.7rem" }} /></h1>
+              <h2 className="product__price">  <Skeleton variant="text" animation="wave" sx={{ fontSize: '2rem', width: "30%" }} /></h2>
+              <h4 className="product__description"> 
+              <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem' }} />
+              <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem' }} />
+              <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem' }} />
+              <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem', width: "50%" }} />
+               </h4>
+
+              <div >
+                <a href="#">  <Skeleton variant="text" animation="wave" sx={{ fontSize: '5rem', height: "80px", width: "30%"}} /></a>
+              </div>
+            </div>
+          </Grid>
+        </Grid>
+      </div>
+    </div>
+
+
+  )
+}
 
 const ProductDetail: FC & GetLayout = () => {
   //get images from redux
   const images = useAppSelector(state => state.productData.images)
-  
+
   const [product, setProduct] = useState<Product | null>(null)
   const { query } = useRouter()
   const productId = query.id;
@@ -39,21 +75,20 @@ const ProductDetail: FC & GetLayout = () => {
       'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
     }
   };
-  const fetchData = async() => {
+  const fetchData = async () => {
     const response = await fetch(`https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${productId}`, options);
     const data = await response.json()
     const product = data?.product
     console.log(product);
-    
+
     setProduct(product)
-    
+
   }
 
   useEffect(() => {
     fetchData()
   }, [])
-  
-  
+
 
 
 
@@ -64,8 +99,8 @@ const ProductDetail: FC & GetLayout = () => {
     //   router.push("/login")
     // }
     // else {
-      dispatch(addToCart(item))
-      dispatch(getTotals())
+    dispatch(addToCart(item))
+    dispatch(getTotals())
     //}
     // history.push("/cart")
   }
@@ -74,7 +109,8 @@ const ProductDetail: FC & GetLayout = () => {
   return (
     <div className="singleProduct__page container" data-aos="zoom-in" data-aos-duration="400">
       <div className="singleproduct__section main__section">
-        <div className="single__product container ">
+        {!product ? <SkeletonCard /> : (
+          <div className="single__product container ">
             <div className="product" key={product?.code}>
               <Grid container spacing={3}>
                 <Grid item xs={4} sm={4} md={1} lg={1} xl={1}>
@@ -84,7 +120,7 @@ const ProductDetail: FC & GetLayout = () => {
                 </Grid>
                 <Grid item xs={8} sm={8} md={5} lg={4} xl={4}>
                   <div className="product__img">
-                  <img src={`${images[0]?.url}`}  alt="" style={{ height: '450px' }} />
+                    <img src={`${images[0]?.url}`} alt="" style={{ height: '450px' }} />
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={10} md={6} lg={6} xl={6}>
@@ -101,7 +137,9 @@ const ProductDetail: FC & GetLayout = () => {
                 </Grid>
               </Grid>
             </div>
-        </div>
+          </div>
+        )}
+
       </div>
     </div>
   );
@@ -115,17 +153,17 @@ ProductDetail.getLayout = function getLayout(page: ReactElement) {
 // export const getStaticProps: GetStaticProps = async ({ params }) => {
 //   console.log(params);
 //   console.log("hello");
-  
-  
-  // const options = {
-  //   method: 'GET',
-  //   url: 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail',
-  //   params: {lang: 'en', country: 'us', productcode: '0839915011'},
-  //   headers: {
-  //     'X-RapidAPI-Key': 'de7170f84cmsh66bb3410a574859p1592b8jsn9a2eddf68f02',
-  //     'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
-  //   }
-  // };
+
+
+// const options = {
+//   method: 'GET',
+//   url: 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail',
+//   params: {lang: 'en', country: 'us', productcode: '0839915011'},
+//   headers: {
+//     'X-RapidAPI-Key': 'de7170f84cmsh66bb3410a574859p1592b8jsn9a2eddf68f02',
+//     'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
+//   }
+// };
 //   return {
 //     props: {
 //       productDetails: data?.mens
