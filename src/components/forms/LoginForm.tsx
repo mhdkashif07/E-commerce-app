@@ -3,7 +3,7 @@ import Checkbox from "@mui/material/Checkbox";
 // import { Header } from "./Header";
 import { makeStyles, createStyles } from '@mui/styles';
 import Link from "next/link";
-import { SelectChangeEvent } from "@mui/material";
+import { Grid, SelectChangeEvent } from "@mui/material";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { AuthContext } from "../../context/auth-context";
 import { useRouter } from "next/router";
@@ -13,6 +13,8 @@ import { useAppDispatch } from "../../app/hook";
 import { useAuth } from "../../utils/utils";
 import { isError, isSuccess } from "../../app/slices/loadingSlice";
 import { doc, setDoc } from "firebase/firestore";
+import { BsFacebook } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 
 
 
@@ -64,24 +66,27 @@ const LoginForm = () => {
           {/* <Link href="/home"><h1>This is login page</h1></Link> */}
           <div className="center_form">
             <div className="login_title">
-              {/* <h3>Login</h3>
-              <p>
-                Imported JSX component Choose_us must be in PascalCase or
-                SCREAMING_SNAKE_CASE
-              </p> */}
             </div>
             <div>
               <form onSubmit={handleLogin} className="login_form">
                 <div className="form__container">
-                  <div className="input__field">
-                    <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
-                  </div>
-                  <div className="input__field">
-                    <input type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
-                  </div>
+                  <Grid container>
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <div className="input__field">
+                        <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
+                      </div>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <div className="input__field">
+                        <input type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
+                      </div>
+                    </Grid>
+                  </Grid>
+
+
                 </div>
 
-                <div style={{ margin: "5px 0 0 0", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div className="form__container--forget">
                   <div>
                     <button><PrimaryButton text="Login" /></button>
                   </div>
@@ -103,12 +108,12 @@ const LoginForm = () => {
                   </div>
                 </div>
 
-                <div className="login_using_container">
+                <div className="login_using_container" style={{marginTop: "1rem"}}>
                   <div className="login_facebook">
-                    <a href="">facebook</a>
+                    <a href=""><BsFacebook size={34} /></a>
                   </div>
                   <div className="login_gmail">
-                    <a href="">gmail</a>
+                    <a href=""><FcGoogle size={34} /> </a>
                   </div>
                 </div>
               </form>
