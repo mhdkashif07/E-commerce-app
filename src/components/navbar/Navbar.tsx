@@ -195,9 +195,9 @@ const Navbar = () => {
                     <li>
                       <Link href="/"><a href=""><SearchOutlined /></a></Link>
                     </li>
-                    {useAuth.isUserAuthenticated() ? (
-                      <li className="cart__logo"><Link href="/dashboard/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></li>
-                    ) : ""}
+                    {/* {useAuth.isUserAuthenticated() ? ( */}
+                    <li className="cart__logo"><Link href="/dashboard/cart"><a href=""><MdShoppingCart /></a></Link><span className="total__items">{cartTotalQuantity}</span></li>
+                    {/* ) : ""} */}
                     {!useAuth.isUserAuthenticated() ? (
                       <li><Link href="/login"><a href=""><BsFillPersonFill /></a></Link></li>
                     ) : <li><button onClick={(e) => handleLogout(e)} ><a href=""><AiOutlineLogout /></a></button></li>}

@@ -4,18 +4,18 @@ import { Grid } from "@mui/material";
 import { removeFromCart, clearCart, decreaseCart, addToCart, getTotals } from "../../../app/slices/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hook";
 import Link from "next/link";
-import Layout, { NestedLayout } from "..";
+// import Layout, { NestedLayout } from "../dashboard";
 
 
 const Cart = () => {
   const cart = useAppSelector((state) => state.cart);
   console.log(cart.cartTotalAmount);
-  
+
   const dispatch = useAppDispatch()
 
 
   useEffect(() => {
-   dispatch(getTotals())
+    dispatch(getTotals())
   }, [cart, dispatch])
 
   //function will get an id which wil be remove from cart items
@@ -29,7 +29,7 @@ const Cart = () => {
 
   const handleIncreaseCart = (item: number) => {
     dispatch(addToCart(item))
-    localStorage.setItem("nextjs", "store value in localstorage")
+    // localStorage.setItem("nextjs", "store value in localstorage")
   }
 
 
@@ -73,7 +73,7 @@ const Cart = () => {
               <div className="cart__items">
                 <Grid container>
                   {cart?.cartItems &&
-                    cart?.cartItems?.map((item: any) => (
+                    cart?.cartItems?.map((item: any, i: number) => (
                       <Grid
                         item
                         xs={12}
@@ -81,7 +81,7 @@ const Cart = () => {
                         md={12}
                         lg={12}
                         xl={12}
-                        key={item.id}
+                        key={i}
                         style={{ padding: "15px 0", borderTop: "1px solid grey" }}
                       >
                         <Grid container>
@@ -129,7 +129,7 @@ const Cart = () => {
                             }}
                           >
                             <div className="cart__quantity">
-                              <button  className="count" onClick={() => handleDecreaseCart(item)}> - </button>
+                              <button className="count" onClick={() => handleDecreaseCart(item)}> - </button>
                               <div>{item.cartQuantity}</div>
                               <button onClick={() => handleIncreaseCart(item)} > + </button>
                             </div>
@@ -158,9 +158,9 @@ const Cart = () => {
               </div>
 
               <div className="cart__summary">
-                <div className="clear__cart">
-                  {/* <button className="clear__btn" onClick={() => dispatch(clearCart())}>Clear Cart</button> */}
-                </div>
+                {/* <div className="clear__cart">
+                  <button className="clear__btn" onClick={() => dispatch(clearCart())}>Clear Cart</button>
+                </div> */}
 
                 <div className="cart__checkout" data-aos="zoom-in" data-aos-duration="400">
                   <div className="subtotal">
@@ -178,16 +178,15 @@ const Cart = () => {
               </div>
             </div>
           )}
-          {/* {cartItem.map()} */}
         </div>
       </div>
     </div>
   );
 };
 
-Cart.getLayout = function getLayout(page: ReactElement){
-  return  <NestedLayout>{page}</NestedLayout>
-}
+// Cart.getLayout = function getLayout(page: ReactElement){
+//   return  <NestedLayout>{page}</NestedLayout>
+// }
 
 
 export default Cart;

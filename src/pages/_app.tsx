@@ -29,7 +29,7 @@ const clientSideEmotionCache = createEmotionCache();
 //   emotionCache?: EmotionCache;
 // }
 
-type NextPageWithLayout = NextPage  & {
+type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
@@ -41,17 +41,17 @@ type AppPropsWithLayout = AppProps & {
 function MyApp(props: AppPropsWithLayout) {
   const containerRef = useRef(null);
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  const getLayout = Component.getLayout?? ((page) => page)
+  const getLayout = Component.getLayout ?? ((page) => page)
   useEffect(() => {
     AOS.init({
-        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-  offset: 150, // offset (in px) from the original trigger point
-  delay: 1, // values from 0 to 3000, with step 50ms
-  duration: 400, // values from 0 to 3000, with step 50ms
-  easing: 'ease', // default easing for AOS animations
-  once: false, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-  anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+      offset: 150, // offset (in px) from the original trigger point
+      delay: 1, // values from 0 to 3000, with step 50ms
+      duration: 400, // values from 0 to 3000, with step 50ms
+      easing: 'ease', // default easing for AOS animations
+      once: false, // whether animation should happen only once - while scrolling down
+      mirror: false, // whether elements should animate out while scrolling past them
+      anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
     });
     AOS.refresh();
   }, []);
@@ -76,12 +76,12 @@ function MyApp(props: AppPropsWithLayout) {
             watch={[]}
             containerRef={containerRef}>
             <main data-scroll-container ref={containerRef}> */}
-            <AuthProvider>
+          <AuthProvider>
             {/* < Navbar /> */}
-              {getLayout(<Component {...pageProps} />)}
-              {/* <Footer /> */}
-            </AuthProvider>
-            {/* </main>
+            {getLayout(<Component {...pageProps} />)}
+            {/* <Footer /> */}
+          </AuthProvider>
+          {/* </main>
           </LocomotiveScrollProvider> */}
         </Provider>
       </ThemeProvider>
