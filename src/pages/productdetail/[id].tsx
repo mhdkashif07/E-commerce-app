@@ -35,15 +35,15 @@ export const SkeletonCard = () => {
               {/* <h4 className="product__discount">sale</h4> */}
               <h1 className="product__name">  <Skeleton variant="text" animation="wave" sx={{ fontSize: '2rem', marginTop: "-.7rem" }} /></h1>
               <h2 className="product__price">  <Skeleton variant="text" animation="wave" sx={{ fontSize: '2rem', width: "30%" }} /></h2>
-              <h4 className="product__description"> 
-              <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem' }} />
-              <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem' }} />
-              <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem' }} />
-              <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem', width: "50%" }} />
-               </h4>
+              <h4 className="product__description">
+                <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem' }} />
+                <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem' }} />
+                <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem' }} />
+                <Skeleton variant="text" animation="wave" sx={{ fontSize: '1rem', width: "50%" }} />
+              </h4>
 
               <div >
-                <a href="#">  <Skeleton variant="text" animation="wave" sx={{ fontSize: '5rem', height: "80px", width: "30%"}} /></a>
+                <a href="#">  <Skeleton variant="text" animation="wave" sx={{ fontSize: '5rem', height: "80px", width: "30%" }} /></a>
               </div>
             </div>
           </Grid>
@@ -57,7 +57,7 @@ export const SkeletonCard = () => {
 
 const ProductDetail: FC & GetLayout = () => {
   //get images from redux
-  const images = useAppSelector(state => state.productData.images)
+  // const images = useAppSelector(state => state.productData.images)
 
   const [product, setProduct] = useState<Product | null>(null)
   const { query } = useRouter()
@@ -115,12 +115,12 @@ const ProductDetail: FC & GetLayout = () => {
               <Grid container spacing={3}>
                 <Grid item xs={4} sm={4} md={1} lg={1} xl={1}>
                   <div className="product__img">
-                    <img src={`${images?.[0]?.url}`} alt="" />
+                    <img src={product?.articlesList?.[1]?.galleryDetails?.[0]?.baseUrl} alt="" />
                   </div>
                 </Grid>
                 <Grid item xs={8} sm={8} md={5} lg={4} xl={4}>
                   <div className="product__img">
-                    <img src={`${images[0]?.url}`} alt="" style={{ height: '450px' }} />
+                    <img src={product?.articlesList?.[0]?.galleryDetails?.[0]?.baseUrl} alt="" style={{ height: '450px' }} />
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={10} md={6} lg={6} xl={6}>

@@ -4,30 +4,25 @@ import { Grid } from "@mui/material";
 import { removeFromCart, clearCart, decreaseCart, addToCart, getTotals } from "../../../app/slices/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hook";
 import Link from "next/link";
+import PrimaryLayout from "../../../components/layout/PrimaryLayout";
 // import Layout, { NestedLayout } from "../dashboard";
 
 
 const Cart = () => {
-  const [hasMounted, setHasMounted] = useState(false);
-  console.log(hasMounted);
-
-
-  const cart = useAppSelector((state) => state.cart);
-  console.log(cart.cartTotalAmount);
-
   const dispatch = useAppDispatch()
+
+  const [hasMounted, setHasMounted] = useState(false);
+  const cart = useAppSelector((state) => state.cart);
+
 
   useEffect(() => {
     setHasMounted(true);
+    dispatch(getTotals())
   }, [cart, dispatch]);
 
   if (!hasMounted) {
     return null;
   }
-
-  // useEffect(() => {
-  //   dispatch(getTotals())
-  // }, [cart, dispatch])
 
   //function will get an id which wil be remove from cart items
   const handleRemoveItem = (item: number) => {
@@ -100,7 +95,7 @@ const Cart = () => {
                             <div className="cart__image">
                               <div>
                                 <img
-                                  src={`../${item.image}`}
+                                  src={item.articlesList?.[0]?.galleryDetails?.[0]?.baseUrl}
                                   alt="cart__img"
                                   style={{ width: "120px", height: "120px" }}
                                 />
@@ -124,7 +119,7 @@ const Cart = () => {
                               alignItems: "center",
                             }}
                           >
-                            <div className="cart__price">$ {item.price}</div>
+                            <div className="cart__price">$ {item?.whitePrice?.price}</div>
                           </Grid>
                           <Grid
                             item
@@ -159,7 +154,7 @@ const Cart = () => {
                             }}
                           >
                             <div className="cart__total">
-                              <h3> ${item.price * item.cartQuantity}</h3>
+                              <h3> ${item?.whitePrice?.price * item.cartQuantity}</h3>
                             </div>
                           </Grid>
                         </Grid>
@@ -195,9 +190,9 @@ const Cart = () => {
   );
 };
 
-// Cart.getLayout = function getLayout(page: ReactElement){
-//   return  <NestedLayout>{page}</NestedLayout>
-// }
+Cart.getLayout = function getLayout(page: ReactElement) {
+  return <PrimaryLayout>{page}</PrimaryLayout>
+}
 
 
 export default Cart;
