@@ -1,4 +1,4 @@
-import React, { useEffect, ReactElement } from "react";
+import React, { useEffect, ReactElement, useState } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Grid } from "@mui/material";
 import { removeFromCart, clearCart, decreaseCart, addToCart, getTotals } from "../../../app/slices/cartSlice";
@@ -8,15 +8,26 @@ import Link from "next/link";
 
 
 const Cart = () => {
+  const [hasMounted, setHasMounted] = useState(false);
+  console.log(hasMounted);
+
+
   const cart = useAppSelector((state) => state.cart);
   console.log(cart.cartTotalAmount);
 
   const dispatch = useAppDispatch()
 
-
   useEffect(() => {
-    dispatch(getTotals())
-  }, [cart, dispatch])
+    setHasMounted(true);
+  }, [cart, dispatch]);
+
+  if (!hasMounted) {
+    return null;
+  }
+
+  // useEffect(() => {
+  //   dispatch(getTotals())
+  // }, [cart, dispatch])
 
   //function will get an id which wil be remove from cart items
   const handleRemoveItem = (item: number) => {
